@@ -11,22 +11,28 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <div>
+           <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+        </div>
 
-  <div>
-    <%= form.label :titulo, style: "display: block" %>
-    <%= form.text_field :titulo %>
-  </div>
+        <div>
+          <%= form.label :titulo %>
+          <%= form.text_field :titulo, class: "form-control" %>
+        </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
+        <div class="mb-3">
+          <%= form.label :body%>
+          <%= form.text_area :body, class: "form-control" %>
+        </div>
 
-  <div>
-    <%= form.submit %>
+        <div>
+          <%= form.submit "Criar Post" , class: "btn btn-outline-dark" %>
+          <%= link_to "Back to posts", posts_path, class: "btn btn-outline-dark" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
