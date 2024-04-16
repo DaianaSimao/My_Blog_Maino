@@ -23,10 +23,11 @@ class ComentariosController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comentario = @post.comentarios.build(comentario_params)
+
     if @comentario.save
-      redirect_to @post, notice: 'Comentário criado com sucesso.'
+      render turbo_stream: turbo_stream.append("comments", partial: "comentario", locals: { comentario: @comentario })
     else
-      render 'posts/show', alert: 'Erro ao criar comentário.'
+     render turbo_stream: turbo_stream.replace("comment_form", partial: "form"), status: :unprocessable_entity
     end
   end
 
