@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :comentarios
-  resources :posts
+  resources :posts do
+    resources :comentarios
+  end
+  
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     sessions: 'users/sessions',

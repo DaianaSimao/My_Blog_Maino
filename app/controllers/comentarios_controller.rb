@@ -21,16 +21,12 @@ class ComentariosController < ApplicationController
 
   # POST /comentarios or /comentarios.json
   def create
-    @comentario = Comentario.new(comentario_params)
-
-    respond_to do |format|
-      if @comentario.save
-        format.html { redirect_to comentario_url(@comentario), notice: "Comentario was successfully created." }
-        format.json { render :show, status: :created, location: @comentario }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comentario.errors, status: :unprocessable_entity }
-      end
+    @post = Post.find(params[:post_id])
+    @comentario = @post.comentarios.build(comentario_params)
+    if @comentario.save
+      redirect_to @post, notice: 'Comentário criado com sucesso.'
+    else
+      render 'posts/show', alert: 'Erro ao criar comentário.'
     end
   end
 

@@ -23,16 +23,17 @@
               <!-- Post title-->
               <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1><br><br>
               <% @posts.each do |post| %>
-              <h3 class="fw-bolder mb-1"><%= link_to post.titulo.capitalize, post_path(post) %></h3>
+              <h3 class="fw-bolder mb-1"><%=post.titulo.capitalize%></h3>
               <!-- Post meta content-->
               <div class="text-muted fst-italic mb-2">Posted <%= post.created_at %> by <%= post.user.perfil.nome.capitalize %></div>
               <!-- Post categories-->
               <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
               <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
             </header>
-            <section class="mb-5">
-              <p class="fs-5 mb-4"><%= post.body %></p>
+            <section>
+              <p class="fs-5"><%= post.body %></p>
             </section>
+            <%= link_to "Comentar", post_path(post) , class: "mb-5 btn btn-outline-dark" %>
           </article>
         <% end %>
         </div>
