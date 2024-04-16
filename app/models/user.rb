@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :perfil
+  has_many :posts
   accepts_nested_attributes_for :perfil
 
   # Include default devise modules. Others available are:
