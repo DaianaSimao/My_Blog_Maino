@@ -36,6 +36,9 @@
             <%= link_to "Comentar", post_path(post) , class: "mb-5 btn btn-outline-dark" %>
           </article>
         <% end %>
+        <div class="digg_pagination mb-5">
+          <%= will_paginate @posts , page_links: true %>
+        </div>
         </div>
         <!-- Side widgets-->
         <div class="col-lg-4">

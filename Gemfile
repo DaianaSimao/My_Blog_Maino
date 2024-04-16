@@ -16,6 +16,7 @@ gem "redis", "~> 4.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "devise"
+gem 'will_paginate', '~> 4.0'
 
 group :development, :test do
 
