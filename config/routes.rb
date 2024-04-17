@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :comentarios
+  resources :perfis
+  get '/user_details', to: 'accounts#user_details'
+  get '/posts_details', to: 'accounts#posts_details'
   resources :posts do
     resources :comentarios
   end
@@ -12,8 +15,6 @@ Rails.application.routes.draw do
     unlocks: "users/unlocks",
     passwords: "users/passwords",
    }
-  resources :perfis
-
   get "home/index"
   root "home#index"
 end

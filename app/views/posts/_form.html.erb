@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,29 +9,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-lg-8">
-        <div>
-           <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
-        </div>
-
-        <div>
-          <%= form.label :titulo %>
-          <%= form.text_field :titulo, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= form.label :body%>
-          <%= form.text_area :body, class: "form-control" %>
-        </div>
-
-        <div>
-          <%= form.submit "Criar Post" , class: "btn btn-outline-dark" %>
-          <%= link_to "Back to posts", posts_path, class: "btn btn-outline-dark" %>
-        </div>
+  <div class="container px-5 my-5">
+    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+      <div class="mb-3">
+        <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+        <%= form.label :titulo %>
+        <%= form.text_field :titulo, class: "form-control" %>
       </div>
-    </div>
+      <div class="mb-3">
+        <%= form.label :body, class: "form-label"%>
+        <%= form.text_area :body, class: "form-control", style: "height: 10rem;" %>
+      </div>
+      <div>
+        <%= form.submit "Criar Post" , class: "btn btn-outline-dark" %>
+        <%= link_to "Voltar", posts_path, class: "btn btn-outline-dark" %>
+      </div>
+    </form>
   </div>
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <% end %>

@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_16_150817) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_16_230642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comentarios", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.string "autor"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["post_id"], name: "index_comentarios_on_post_id"
+    t.index ["user_id"], name: "index_comentarios_on_user_id"
+  end
 
   create_table "perfis", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -45,6 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_16_150817) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comentarios", "posts"
+  add_foreign_key "comentarios", "users"
   add_foreign_key "perfis", "users"
   add_foreign_key "posts", "users"
 end
