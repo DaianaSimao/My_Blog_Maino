@@ -62,6 +62,6 @@ class ComentariosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comentario_params
-      params.require(:comentario).permit(:post_id, :autor, :body)
+      params.require(:comentario).permit(:post_id, :autor, :body, :user_id)
     end
 end
