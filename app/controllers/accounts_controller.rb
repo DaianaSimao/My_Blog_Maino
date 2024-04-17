@@ -11,6 +11,6 @@ class AccountsController < ApplicationController
   def posts_details
     @posts = Post.where(user_id: current_user.id)
     @posts = @posts.order(created_at: :desc)
-    @posts = @posts.paginate(page: params[:page], per_page: 5)
+    @posts = @posts.paginate(page: params[:page], per_page: 3)
   end
 end
