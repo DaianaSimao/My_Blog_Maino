@@ -10,6 +10,7 @@ pt-BR:
       user: Usuário
       post: Post
       perfil: Usuário
+      comentario: Comentário 
     attributes:
       user:
         email: "E-mail"
@@ -24,6 +25,9 @@ pt-BR:
         nome: "Nome"
         sobrenome: "Sobrenome"
         bio: "Biografia"
+      comentario:
+        body: "Comentário"
+        autor: "Autor"
   date:
     abbr_day_names:
     - dom
