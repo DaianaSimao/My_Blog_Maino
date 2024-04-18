@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @tags = TagPost.where(post_id: @post.id)
   end
 
   # GET /posts/new
@@ -23,7 +24,11 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-
+    if params[:tag_ids].present?
+      params[:tag_ids].each do |tag|
+        TagPost.create(post_id: @post.id, tag_id: tag)
+      end
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -66,6 +71,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:user_id, :titulo, :body)
+      params.require(:post).permit(:user_id, :titulo, :body, :tag_ids => [])
     end
 end

@@ -17,4 +17,5 @@ Rails.application.routes.draw do
    }
   get "home/index"
   root "home#index"
+  get '/search_suggestions', to: 'home#search_suggestions'
 end
