@@ -1,5 +1,47 @@
 "pt-BR":
   devise:
+    models:
+      user: Usuário
+      session: Sessão
+      confirmation: Confirmação
+      password: Senha
+      registration: Registro
+      unlock: Desbloqueio
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        current_password: "Senha Atual"
+        remember_me: "Lembrar-me"
+      session:
+        email: "E-mail"
+        password: "Senha"
+        remember_me: "Lembrar-me"
+      confirmation:
+        email: "E-mail"
+      unlock:
+        email: "E-mail"
+        password: "Senha"
+      registration:
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        current_password: "Senha Atual"
+      password:
+        password: "Nova Senha"
+        password_confirmation: "Confirmação de Nova Senha"
+    mailer:
+      confirmation_instructions:
+        subject: "Instruções de confirmação"
+      reset_password_instructions:
+        subject: "Instruções para redefinir sua senha"
+      unlock_instructions:
+        subject: "Instruções para desbloquear sua conta"
+      email_changed:
+        subject: "Email modificado"
+      password_change:
+        subject: "Senha modificada"
     confirmations:
       confirmed: "Sua conta foi confirmada com sucesso."
       send_instructions: "Você receberá um e-mail para confirmar sua conta em alguns minutos."
@@ -61,3 +103,4 @@
       not_saved:
         one: "Não foi possível salvar este(a) %{resource}:"
         other: "Não foi possível salvar este(a) %{resource}:"
+      not_equal_to: "não é igual a %{attribute}"

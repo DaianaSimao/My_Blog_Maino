@@ -1,4 +1,3 @@
----
 pt-BR:
   activerecord:
     errors:
@@ -7,6 +6,24 @@ pt-BR:
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+    models:
+      user: Usuário
+      post: Post
+      perfil: Usuário
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        current_password: "Senha Atual"
+        remember_me: "Lembrar-me"
+      post:
+        titulo: "Título"
+        body: "Conteúdo"
+      perfil:
+        nome: "Nome"
+        sobrenome: "Sobrenome"
+        bio: "Biografia"
   date:
     abbr_day_names:
     - dom
@@ -223,3 +240,4 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: pm
+  
