@@ -1,40 +1,44 @@
 <%= form_for post do |form| %>
   <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="container">
+      <% post.errors.full_messages.each do |error_message| %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= error_message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+      <% end %>
     </div>
   <% end %>
   <div class="container px-5 my-5">
     <h1 class="display-5 fw-bolder">Criar Post</h1>
     <div class="card">
       <div class="card-body">
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN" class="d-flex justify-content-center flex-wrap">
-          <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
-          <div style="display: inline-block;  margin-right: 20px; vertical-align: top;">
-            <%= form.label :titulo %>
-            <%= form.text_field :titulo, class: "form-control", style: "width: 700px; height: 37px" %>
+        <%= form_with(model: @post, local: true) do |form| %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+
+          <div class="mb-3">
+            <%= form.label :titulo, class: "form-label" %>
+            <%= form.text_field :titulo, class: "form-control" %>
           </div>
-          <div style="display: inline-block;">
+
+          <div class="mb-3">
             <%= form.label "Tags" %>
-            <%= form.select :tag_ids, options_for_select(Tag.all.map { |tag| [tag.nome, tag.id] }), { include_hidden: false }, { class: "form-select", multiple: true, id: "tag-dropdown" , style: "width: 180px; height: 37px"} %>
+            <%= form.select :tag_ids, options_for_select(Tag.all.map { |tag| [tag.nome, tag.id] }), { include_hidden: false }, { class: "form-select", multiple: true, id: "tag-dropdown" } %>
           </div>
           <div id="selected-tags"></div>
           <div class="mb-3">
-            <%= form.label :body, class: "form-label"%>
-            <%= form.text_area :body, class: "form-control", style: "width: 900px; height: 300px" %>
+            <%= form.label :body, class: "form-label" %>
+            <%= form.text_area :body, class: "form-control", rows: 8 %>
           </div>
-          <div>
-            <%= form.submit "Criar Post" , class: "btn btn-outline-dark" %>
-            <%= link_to "Inicio", home_index_path, class: "btn btn-outline-dark" %>
+
+          <div class="mb-3">
+            <%= form.submit "Criar Post", class: "btn btn-outline-dark" %>
+            <%= link_to "Início", home_index_path, class: "btn btn-outline-dark ms-2" %>
           </div>
-        </form>
-      <div>
-    <div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
