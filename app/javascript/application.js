@@ -3,11 +3,60 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
 
+// Js de comentarios
 document.addEventListener("turbo:submit-end", function(event) {
   if (event.target.matches("form#new_comment") && event.detail.success) {
-    // Encontrar o Turbo Frame que contém os comentários
     const commentsFrame = document.getElementById("comments");
-    // Recarregar o Turbo Frame
     Turbo.visit(window.location.href, { action: "replace", target: commentsFrame });
+  }
+});
+
+// Js de sugestao de pesquisa de tag
+
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('#search-input');
+  const suggestionsContainer = document.querySelector('#suggestions-container');
+
+  searchInput.addEventListener('input', function(event) {
+    const searchText = event.target.value.trim();
+
+    if (searchText.length > 0) {
+      fetchSuggestions(searchText);
+    } else {
+      suggestionsContainer.innerHTML = '';
+    }
+  });
+
+  function fetchSuggestions(searchText) {
+    fetch('/search_suggestions?search=' + searchText)
+      .then(response => response.json())
+      .then(data => {
+        renderSuggestions(data);
+      })
+      .catch(error => {
+        console.error('Error fetching suggestions:', error);
+      });
+  }
+
+  function renderSuggestions(suggestions) {
+    suggestionsContainer.innerHTML = '';
+
+    if (suggestions.length > 0) {
+      const ul = document.createElement('ul');
+      suggestions.forEach(suggestion => {
+        const li = document.createElement('li');
+        li.textContent = suggestion;
+        li.addEventListener('click', function() {
+          searchInput.value = suggestion; // Preencher o campo de texto com a sugestão selecionada
+          suggestionsContainer.innerHTML = ''; // Limpar as sugestões após a seleção
+        });
+        ul.appendChild(li);
+      });
+      suggestionsContainer.appendChild(ul);
+    } else {
+      const p = document.createElement('p');
+      p.textContent = 'Nenhuma sugestão encontrada.';
+      suggestionsContainer.appendChild(p);
+    }
   }
 });
