@@ -12,5 +12,8 @@ class AccountsController < ApplicationController
     @posts = Post.where(user_id: current_user.id)
     @posts = @posts.order(created_at: :desc)
     @posts = @posts.paginate(page: params[:page], per_page: 3)
+    @posts.each do |post|
+      @tags = TagPost.where(post_id: post.id)
+    end
   end
 end
