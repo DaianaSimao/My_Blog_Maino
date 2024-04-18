@@ -1,4 +1,4 @@
-<%= form_with(model: post) do |form| %>
+<%= form_for post do |form| %>
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -10,21 +10,50 @@
     </div>
   <% end %>
   <div class="container px-5 my-5">
-    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-      <div class="mb-3">
-        <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
-        <%= form.label :titulo %>
-        <%= form.text_field :titulo, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= form.label :body, class: "form-label"%>
-        <%= form.text_area :body, class: "form-control", style: "height: 10rem;" %>
-      </div>
+    <h1 class="display-5 fw-bolder">Criar Post</h1>
+    <div class="card">
+      <div class="card-body">
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN" class="d-flex justify-content-center flex-wrap">
+          <%= form.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+          <div style="display: inline-block;  margin-right: 20px; vertical-align: top;">
+            <%= form.label :titulo %>
+            <%= form.text_field :titulo, class: "form-control", style: "width: 700px; height: 37px" %>
+          </div>
+          <div style="display: inline-block;">
+            <%= form.label "Tags" %>
+            <%= form.select :tag_ids, options_for_select(Tag.all.map { |tag| [tag.nome, tag.id] }), { include_hidden: false }, { class: "form-select", multiple: true, id: "tag-dropdown" , style: "width: 180px; height: 37px"} %>
+          </div>
+          <div id="selected-tags" margin-right: 20px class="badge bg-secondary text-decoration-none link-light"></div>
+          <div class="mb-3">
+            <%= form.label :body, class: "form-label"%>
+            <%= form.text_area :body, class: "form-control", style: "width: 900px; height: 300px" %>
+          </div>
+          <div>
+            <%= form.submit "Criar Post" , class: "btn btn-outline-dark" %>
+            <%= link_to "Voltar", posts_path, class: "btn btn-outline-dark" %>
+          </div>
+        </form>
       <div>
-        <%= form.submit "Criar Post" , class: "btn btn-outline-dark" %>
-        <%= link_to "Voltar", posts_path, class: "btn btn-outline-dark" %>
-      </div>
-    </form>
+    <div>
   </div>
   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <% end %>
+<script>
+  $(document).ready(function() {
+    $('#tag-dropdown').change(function() {
+      var selectedTags = $(this).val(); // Obtém as tags selecionadas
+      $('#selected-tags').empty(); // Limpa a área das tags selecionadas
+
+      // Adiciona as tags selecionadas à área das tags
+      if(selectedTags) {
+        selectedTags.forEach(function(tagId) {
+          var tagName = $('#tag-dropdown option[value="' + tagId + '"]').text(); // Obtém o nome da tag
+          $('#selected-tags').append('<span class="badge bg-primary">' + tagName + '</span>'); // Adiciona a tag à área
+        });
+      }
+    });
+  });
+</script>
