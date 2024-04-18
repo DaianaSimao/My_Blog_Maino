@@ -17,6 +17,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "devise"
 gem 'will_paginate', '~> 4.0'
+gem 'i18n'
 
 group :development, :test do
 

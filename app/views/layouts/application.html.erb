@@ -20,19 +20,21 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item"><%= link_to 'Home', root_path, class: "nav-link" %></a></li>
             <% if user_signed_in? %>
-              <li class="nav-item"><%= link_to 'Mnha conta', user_details_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to t('views.my_account'), user_details_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to t('views.sair'), destroy_user_session_path, method: :delete, class: "nav-link" %></li>
             <% else %>
-              <li class="nav-item"><%= link_to 'Entrar', new_user_session_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to 'Registrar', new_user_registration_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to t('views.entrar'), new_user_session_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to t('views.registrar'), new_user_registration_path, class: "nav-link" %></li>
             <% end %>
           </ul>
         </div>
+        <%= link_to image_tag('pt.png', width:'30px', alt: 'PT-BR'), url_for(locale: 'pt-BR'), class:"nav-link", style: "margin-right: 10px;" %>
+        <%= link_to image_tag('en.png', width:'30px', alt: 'EN'), url_for(locale: 'en'), class:"nav-link" %>
       </div>
     </nav>
-    <div class="container">
+    <div class="container mb-3">
       <% flash.each do |type, message| %>
-        <div class="alert alert-<%= type == "alert"? "danger" : "success" %> alert-dismissible fade show" role="alert">
+        <div class="alert alert-<%= type == "alert"? "danger" : "success" %> alert-dismissible fade show mt-3 mb-3" role="alert">
           <%= message %>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
           </button>
