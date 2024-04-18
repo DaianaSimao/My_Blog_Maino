@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const li = document.createElement('li');
         li.textContent = suggestion;
         li.addEventListener('click', function() {
-          searchInput.value = suggestion; // Preencher o campo de texto com a sugestão selecionada
-          suggestionsContainer.innerHTML = ''; // Limpar as sugestões após a seleção
+          searchInput.value = suggestion;
+          suggestionsContainer.innerHTML = '';
         });
         ul.appendChild(li);
       });
@@ -59,4 +59,20 @@ document.addEventListener('DOMContentLoaded', function() {
       suggestionsContainer.appendChild(p);
     }
   }
+});
+
+// Js das tags de crição de post
+
+document.addEventListener('DOMContentLoaded', function() {
+  $('#tag-dropdown').change(function() {
+    var selectedTags = $(this).val();
+    $('#selected-tags').empty();
+
+    if(selectedTags) {
+      selectedTags.forEach(function(tagId) {
+        var tagName = $('#tag-dropdown option[value="' + tagId + '"]').text();
+        $('#selected-tags').append('<span class="tag">' + tagName + '</span>');
+      });
+    }
+  });
 });

@@ -23,7 +23,7 @@
             <%= form.label "Tags" %>
             <%= form.select :tag_ids, options_for_select(Tag.all.map { |tag| [tag.nome, tag.id] }), { include_hidden: false }, { class: "form-select", multiple: true, id: "tag-dropdown" , style: "width: 180px; height: 37px"} %>
           </div>
-          <div id="selected-tags" margin-right: 20px class="badge bg-secondary text-decoration-none link-light"></div>
+          <div id="selected-tags"></div>
           <div class="mb-3">
             <%= form.label :body, class: "form-label"%>
             <%= form.text_area :body, class: "form-control", style: "width: 900px; height: 300px" %>
@@ -42,18 +42,5 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <% end %>
 <script>
-  $(document).ready(function() {
-    $('#tag-dropdown').change(function() {
-      var selectedTags = $(this).val(); // Obtém as tags selecionadas
-      $('#selected-tags').empty(); // Limpa a área das tags selecionadas
 
-      // Adiciona as tags selecionadas à área das tags
-      if(selectedTags) {
-        selectedTags.forEach(function(tagId) {
-          var tagName = $('#tag-dropdown option[value="' + tagId + '"]').text(); // Obtém o nome da tag
-          $('#selected-tags').append('<span class="badge bg-primary">' + tagName + '</span>'); // Adiciona a tag à área
-        });
-      }
-    });
-  });
 </script>
