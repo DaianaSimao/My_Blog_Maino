@@ -256,6 +256,7 @@ DEPENDENCIES
   debug
   devise
   dockerfile-rails (>= 1.6)
+  i18n
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
