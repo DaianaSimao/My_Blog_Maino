@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-6">
         <div class="bg-white p-4 h-100">
-            <div class="p-3 d-flex justify-content-center flex-column align-items-center"> <span class="main-heading">Editar</span>
+            <div class="p-3 d-flex justify-content-center flex-column align-items-center"> <span class="main-heading"><%= t('views.editar')%></span>
                 <div class="form-data">
                   <%= f.label "Email" %><br />
                   <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control w-100" %>
@@ -24,21 +24,21 @@
 
                <%= f.fields_for :perfil_attributes, @perfil do |perfil_form| %>
                   <div class="form-data">
-                    <%= perfil_form.label :nome, "Nome" %><br />
-                    <%= perfil_form.text_field :nome, placeholder: "Nome", class: "form-control w-100" %>
+                    <%= perfil_form.label t('views.nome') %><br />
+                    <%= perfil_form.text_field :nome, placeholder: t('views.nome'), class: "form-control w-100" %>
                   </div>
                   <div class="form-data">
-                    <%= perfil_form.label :sobrenome, "Sobrenome" %><br />
-                    <%= perfil_form.text_field :sobrenome, placeholder: "Sobrenome", class: "form-control w-100" %>
+                    <%= perfil_form.label t('views.sobrenome') %><br />
+                    <%= perfil_form.text_field :sobrenome, placeholder: t('views.sobrenome'), class: "form-control w-100" %>
                   </div>
                   <div class="form-data">
-                    <%= perfil_form.label :bio, "Biografia" %><br />
-                    <%= perfil_form.text_area :bio, placeholder: "Digite algo sobre você", class: "form-control w-100" %>
+                    <%= perfil_form.label t('views.bio') %><br />
+                    <%= perfil_form.text_area :bio, placeholder: t('views.bio'), class: "form-control w-100" %>
                   </div>
                 <% end %>
 
               <div class="form-data">
-                <%= f.label :password %> <i>(Para confirmar as alterações)</i><br />
+                <%= f.label :password %> <i>(<%= t('views.confirmar_alteracao')%>)</i><br />
                 <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control w-100" %>
               </div>
 
@@ -49,8 +49,8 @@
                           Remember me </label> </div> 
                       </div>
                       <div class="signin-btn w-100 mt-2" style="margin-botton: 10px;">
-                        <%= f.submit "Salvar modificações", class: "btn btn-outline-dark" %><br>
-                        <%= link_to "Cancelar", user_details_path, class: "btn btn-outline-dark" %><br>
+                        <%= f.submit t('views.salvar_modificacao'), class: "btn btn-outline-dark" %><br>
+                        <%= link_to t('views.cancelar'), user_details_path, class: "btn btn-outline-dark" %><br>
                       </div>
                       <% end %>
                     </ul>

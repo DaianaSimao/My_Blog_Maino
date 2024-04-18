@@ -1,18 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Blog Post - Start Bootstrap Template</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-  </head>
   <body>
-    <!-- Page content-->
     <div class="container mt-5">
       <div class="row">
         <div class="col-lg-8">
@@ -22,13 +9,17 @@
             <header class="mb-4">
               <!-- Post title-->
               <br>
-              <%= link_to "Novo Post+",new_post_path, class: "btn btn-outline-dark ms-1" %>
+              <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1" %>
               <br>
               <br>
               <% @posts.each do |post| %>
                 <h3 class="fw-bolder mb-1"><%=post.titulo.capitalize%></h3>
                 <!-- Post meta content-->
-                <div class="text-muted fst-italic mb-2">Posted <%= post.created_at %> by <%= post.user.perfil.nome.capitalize %></div>
+                <div class="text-muted fst-italic mb-2">
+                  <%= t('views.posted') %> <%= l(post.created_at) %> 
+                  <%= t('views.by') %> <%= post.user.perfil.nome.capitalize %>
+                </div>
+
                 <!-- Post categories-->
               <% @tags.each do |tag|%>
                 <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= tag.tag.nome %></a>
@@ -37,7 +28,7 @@
               <section>
                 <p class="fs-5"><%= post.body %></p>
               </section>
-              <%= link_to "Comentar", post_path(post) , class: "mb-5 btn btn-outline-dark" %>
+              <%= link_to t('views.buttons.comment'), post_path(post), class: "mb-5 btn btn-outline-dark" %>
             </article>
             <section class="mb-5">
               <div class="card bg-light">
@@ -64,7 +55,7 @@
                       <div class="card-body">
                         <div class="d-flex mb-2">
                           <div class="ms-3">
-                            <div class="fw-bold">Nenhum comentario</div>
+                            <div class="fw-bold"><%= t('views.nenhum_comentario') %></div>
                           </div>
                         </div>
                       </div>
@@ -90,33 +81,6 @@
                 <button class="btn btn-primary" id="button-search" type="button">Go!</button>
               </div>
             </div>
-          </div>
-          <!-- Categories widget-->
-          <div class="card mb-4">
-            <div class="card-header">Categories</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-6">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="#!">Web Design</a></li>
-                    <li><a href="#!">HTML</a></li>
-                    <li><a href="#!">Freebies</a></li>
-                  </ul>
-                </div>
-                <div class="col-sm-6">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="#!">JavaScript</a></li>
-                    <li><a href="#!">CSS</a></li>
-                    <li><a href="#!">Tutorials</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Side widget-->
-          <div class="card mb-4">
-            <div class="card-header">Side Widget</div>
-            <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
           </div>
         </div>
       </div>

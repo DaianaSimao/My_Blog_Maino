@@ -21,11 +21,18 @@
             <!-- Post header-->
             <header class="mb-4">
               <!-- Post title-->
-              <h1 class="fw-bolder mb-1">Seja Bem-Vindo ao My Blog</h1><br><br>
+              <h1 class="fw-bolder mb-1"><%= t('views.welcome') %></h1><br><br>
+              <% if user_signed_in? %>
+                <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1" %>
+              <br><br>
+              <% end %>
               <% @posts.each do |post| %>
               <h3 class="fw-bolder mb-1"><%=post.titulo.capitalize%></h3>
               <!-- Post meta content-->
-              <div class="text-muted fst-italic mb-2">Posted <%= post.created_at %> by <%= post.user.perfil.nome.capitalize %></div>
+              <div class="text-muted fst-italic mb-2">
+                  <%= t('views.posted') %> <%= l(post.created_at) %> 
+                  <%= t('views.by') %> <%= post.user.perfil.nome.capitalize %>
+              </div>
               <!-- Post categories-->
               <% post.tags.each do |tag|%>
                 <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= tag.nome %></a>
@@ -34,7 +41,7 @@
             <section>
               <p class="fs-5"><%= post.body %></p>
             </section>
-            <%= link_to "Comentar", post_path(post) , class: "mb-5 btn btn-outline-dark" %>
+            <%= link_to t('buttons.comment'), post_path(post) , class: "mb-5 btn btn-outline-dark" %>
           </article>
         <% end %>
         <div class="digg_pagination mb-5">
@@ -45,7 +52,7 @@
         <div class="col-lg-4">
           <!-- Search widget-->
           <div class="card mb-4">
-            <div class="card-header">Buscar tag</div>
+            <div class="card-header"><%= t('views.pesquisar_tags')%></div>
             <%= form_tag home_index_path, method: 'get', data: { turbo: false }  do %>
               <div class="card-body">
                 <div class="input-group">

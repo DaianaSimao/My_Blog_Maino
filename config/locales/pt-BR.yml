@@ -240,8 +240,49 @@ pt-BR:
   time:
     am: am
     formats:
-      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      default: "%a, %d de %B de %Y, %H:%M:%S"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: pm
+  views:
+    pagination:
+      first: "&laquo; Primeira"
+      last: "Última &raquo;"
+      next: "Próxima &raquo;"
+      previous: "&laquo; Anterior"
+    posted: "Postado"
+    by: "por"
+    nenhum_comentario: "Nenhum comentário"
+    comentarios: "Comentários"
+    bio: "Biografia"
+    nome: "Nome"
+    welcome: "Seja Bem-vindo ao Blog!"
+    pesquisar_tags: "Pesquisar Tags"
+    my_account: "Minha Conta"
+    sair: "Sair"
+    editar_post: "Editar Post"
+    entrar: "Entrar"
+    registrar: "Registrar"
+    enviar_comentario: "Enviar Comentário"
+    junte_se: "Junte-se à discussão e deixe um comentário!"
+    cancelar: "Cancelar"
+    esqueceu_senha: "Esqueceu a senha?"
+    mudar_senha: "Alterar Senha"
+    mudanca_senha: "Alterar de Senha:"
+    nome: "Nome"
+    sobrenom: "Sobrenome"
+    editar: "Editar"
+    confirmar_alters: "Para confirmar as alterações"
+    salvar_modificacao: "Salvar Modificações"
+    sobre_voce: "Digite algo sobre você"
+    cadastrar: "Cadastrar"
+    registre_se: "Inscreva-se"
+    posts:
+      new:
+        create_post: "Criar Post"
+  buttons:
+    new_post: "Novo Post+"
+    comment: "Comentar"
+    editar_perfil: "Editar Perfil"
+  
   

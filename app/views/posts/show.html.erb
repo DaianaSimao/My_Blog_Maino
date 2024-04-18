@@ -1,4 +1,3 @@
-<p style="color: green"><%= notice %></p>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +23,10 @@
               <!-- Post title-->
               <h1 class="fw-bolder mb-1"><%= @post.titulo%></h1>
               <!-- Post meta content-->
-              <div class="text-muted fst-italic mb-2">Posted <%= @post.created_at %> by <%= @post.user.perfil.nome.capitalize %></div>
+              <div class="text-muted fst-italic mb-2">
+                  <%= t('views.posted') %> <%= l(@post.created_at) %> 
+                  <%= t('views.by') %> <%= @post.user.perfil.nome.capitalize %>
+              </div>
               <!-- Post categories-->
               <% @tags.each do |tag|%>
                 <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= tag.tag.nome %></a>
@@ -32,18 +34,17 @@
             </header>
             <section class="mb-5">
               <p class="fs-5 mb-4"><%= @post.body %></p>
-              
+              <%= link_to t('views.editar_post'), edit_post_path(@post) , class: "mb-5 btn btn-outline-dark" %>
             </section>
           </article>
-
           <section class="mb-5">
             <div class="card bg-light">
               <div class="card-body">
                 <turbo-frame id="comment_form">
                   <%= form_with(model: [@post, Comentario.new], id: "new_comment", data: { controller: "form", action: "turbo:submit-end->form#reset" }) do |form| %>
-                    <%= form.text_area :body, class: "form-control mb-3", rows: "3", placeholder: "Junte-se à discussão e deixe um comentário!" %>
+                    <%= form.text_area :body, class: "form-control mb-3", rows: "3", placeholder: t('views.junte_se') %>
                     <div>
-                      <%= form.submit "Enviar Comentário", class: "btn btn-outline-dark mb-2" %>
+                      <%= form.submit t('views.enviar_comentario'), class: "btn btn-outline-dark mb-2" %>
                       <%= form.hidden_field :autor, value: current_user.nil? ? "Anonimo" : current_user.perfil.nome.capitalize %>
                       <%= form.hidden_field :user_id, value: current_user.nil? ? "" : current_user.id %>
                     </div>
