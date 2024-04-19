@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[ index show ]
-  protect_from_forgery with: :null_session
 
   # GET /posts or /posts.json
   def index
@@ -13,16 +12,16 @@ class PostsController < ApplicationController
   end
 
   def create_upload_post
-    txt_file_path = params[:post][:body].path
-    txt_file = File.open(txt_file_path, 'r')
-    body = ""
-    txt_file.each_line do |line|
-      body += line
+    params[:post][:body] = ::Upload::ProcessTxt.new(params[:post][:body]).execute if params[:post][:body].present?
+    @post = Post.new(post_params)
+    sleep 5
+    
+    job = ProcessPostJob.set(wait: 30.seconds).perform_later(@post.titulo, @post.body, @post.tag_ids, @post.user_id)
+    if job.successfully_enqueued?
+      redirect_to posts_details_path, notice: "Post enviado com sucesso! Aguarde a conclusão do processamento."
+    else
+      redirect_to posts_details_path, notice: "Falha ao enfileirar o post. Erro: #{job.error}"
     end
-    txt_file.close
-    body
-    # Iniciar o job em segundo plano
-    ProcessTxtJob.perform_later(10.seconds, params[:post][:titulo], body, params[:post][:tag_ids], params[:post][:user_id])
   end
 
   # GET /posts/1 or /posts/1.json
@@ -42,7 +41,6 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
