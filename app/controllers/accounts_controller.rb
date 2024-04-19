@@ -9,11 +9,11 @@ class AccountsController < ApplicationController
   end
 
   def posts_details
-    @posts = Post.where(user_id: current_user.id)
-    @posts = @posts.order(created_at: :desc)
+    @posts = Post.where(user_id: current_user.id).order("created_at DESC")
+    search = params[:search]
+    tags = Tag.where("nome ILIKE ?", "%#{search}%").pluck(:id)
+    posts = TagPost.where(tag_id: tags).map(&:post) if tags.present?
+    @posts = Post.where(id: posts.pluck(:id)).order("created_at DESC") if posts.present?
     @posts = @posts.paginate(page: params[:page], per_page: 3)
-    @posts.each do |post|
-      @tags = TagPost.where(post_id: post.id)
-    end
   end
 end
