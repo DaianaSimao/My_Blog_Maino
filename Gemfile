@@ -18,6 +18,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem 'will_paginate', '~> 4.0'
 gem 'i18n'
+gem 'redis-rails'
 
 group :development, :test do
 
@@ -26,6 +27,7 @@ end
 
 group :development do
   gem "web-console"
+  gem "pry"
 end
 
 group :test do
@@ -35,3 +37,5 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "sidekiq", "~> 7.2"
