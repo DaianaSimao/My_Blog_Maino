@@ -1,4 +1,4 @@
-<%= form_with(url: create_upload_post_path, method: :post, multipart: true) do |form| %>
+<%= form_with(url: create_upload_post_path, method: :post, multipart: true, data: {turbo: false}) do |form| %>
   <% if @post.errors.any? %>
     <div class="container">
       <% @post.errors.full_messages.each do |error_message| %>
@@ -30,7 +30,7 @@
             <%= form.file_field :body, class: "form-control" %>
           </div>
               <div class="mb-3">
-                <%= form.submit "Create", class: "btn btn-outline-dark" %>
+                <%= form.submit "Create", class: "btn btn-outline-dark", data: {turbo: false}%>  
                 <%= link_to "Home", home_index_path, class: "btn btn-outline-dark ms-2" %>
               </div>
             <% end %>

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[ index show ]
+  protect_from_forgery with: :null_session
 
   # GET /posts or /posts.json
   def index
@@ -12,8 +13,16 @@ class PostsController < ApplicationController
   end
 
   def create_upload_post
-    PostWorker.perform_async(params[:post][:titulo], params[:post][:body].path, params[:post][:tag_ids], params[:post][:user_id])
-    redirect_to post_path(@post) , notice: "Post was successfully created."
+    txt_file_path = params[:post][:body].path
+    txt_file = File.open(txt_file_path, 'r')
+    body = ""
+    txt_file.each_line do |line|
+      body += line
+    end
+    txt_file.close
+    body
+    # Iniciar o job em segundo plano
+    ProcessTxtJob.perform_later(10.seconds, params[:post][:titulo], body, params[:post][:tag_ids], params[:post][:user_id])
   end
 
   # GET /posts/1 or /posts/1.json

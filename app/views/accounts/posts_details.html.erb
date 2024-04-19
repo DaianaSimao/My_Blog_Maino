@@ -1,6 +1,13 @@
 <!DOCTYPE html>
   <body>
+  
     <div class="container mt-5">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>>
+      <% end %>
+      <br>
       <div class="row">
         <div class="col-lg-8">
           <!-- Post content-->

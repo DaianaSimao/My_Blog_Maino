@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   resources :comentarios
   resources :perfis
   get '/user_details', to: 'accounts#user_details'
@@ -20,4 +22,5 @@ Rails.application.routes.draw do
   get '/search_suggestions', to: 'home#search_suggestions'
   get '/upload_post', to: 'posts#upload_post'
   match '/create_upload_post', to: 'posts#create_upload_post' , via: [:get, :post]
+
 end

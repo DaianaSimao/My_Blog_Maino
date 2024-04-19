@@ -16,7 +16,7 @@ module Myblog
     
     config.i18n.available_locales = [:en, "pt-BR"]
     config.time_zone = "Brasilia"
-
+    config.active_job.queue_adapter = :sidekiq
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
