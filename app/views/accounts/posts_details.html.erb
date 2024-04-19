@@ -9,7 +9,7 @@
             <header class="mb-4">
               <!-- Post title-->
               <br>
-              <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1" %>
+              <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
               <br>
               <br>
               <% @posts.each do |post| %>
@@ -21,8 +21,8 @@
                 </div>
 
                 <!-- Post categories-->
-              <% @tags.each do |tag|%>
-                <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= tag.tag.nome %></a>
+              <% post.tags.each do |tag|%>
+                <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= tag.nome %></a>
               <% end %>
               </header>
               <section>
@@ -74,13 +74,18 @@
         <div class="col-lg-4">
           <!-- Search widget-->
           <div class="card mb-4">
-            <div class="card-header">Search</div>
-            <div class="card-body">
-              <div class="input-group">
-                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+            <div class="card-header"><%= t('views.pesquisar_tags')%></div>
+            <%= form_tag home_index_path, method: 'get', data: { turbo: false }  do %>
+              <div class="card-body">
+                <div class="input-group">
+                  <%= text_field_tag :search, params[:searh], class: "form-control", id: "search-input"%>
+                  <%= button_tag(value: "commit", type: 'submit', class: "btn btn-primary") do %>
+                    <i class="bi bi-search-heart-fill"></i>
+                  <% end %>
+                </div>
+                <div id="suggestions-container"></div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

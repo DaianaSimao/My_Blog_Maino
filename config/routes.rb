@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get "home/index"
   root "home#index"
   get '/search_suggestions', to: 'home#search_suggestions'
+  get '/upload_post', to: 'posts#upload_post'
+  match '/create_upload_post', to: 'posts#create_upload_post' , via: [:get, :post]
 end

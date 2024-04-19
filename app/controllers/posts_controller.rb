@@ -7,6 +7,15 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def upload_post
+    @post = Post.new
+  end
+
+  def create_upload_post
+    PostWorker.perform_async(params[:post][:titulo], params[:post][:body].path, params[:post][:tag_ids], params[:post][:user_id])
+    redirect_to post_path(@post) , notice: "Post was successfully created."
+  end
+
   # GET /posts/1 or /posts/1.json
   def show
     @tags = TagPost.where(post_id: @post.id)
@@ -24,11 +33,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    if params[:tag_ids].present?
-      params[:tag_ids].each do |tag|
-        TagPost.create(post_id: @post.id, tag_id: tag)
-      end
-    end
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
