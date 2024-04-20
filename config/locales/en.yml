@@ -269,6 +269,7 @@ en:
     registre_se: "Register"
     digite_email: "Type your email"
     enviar_redefinicao: "Send me instructions for resetting your password"
+    nova_senha: "New Password"
     posts:
       new:
         create_post: "Criar Post"
@@ -276,3 +277,6 @@ en:
     new_post: "New Post+"
     comment: "Comment"
     editar_perfil: "Edit Profile"
+    editar_senha: "Edit Password"
+  passwords:
+    senha_alterada: "Your password has been changed successfully."

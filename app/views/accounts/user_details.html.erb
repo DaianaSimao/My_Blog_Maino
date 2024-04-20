@@ -10,7 +10,8 @@
             <p class="text-muted mb-1">Posts: <%= @post_count %> </p>
             <p class="text-muted mb-4"><%= t('views.comentarios') %> <%= @comentarios_count %> </p>
             <div class="d-flex justify-content-center mb-2">
-              <%= link_to t('buttons.editar_perfil'), edit_user_registration_path(@user), class: "btn btn-outline-dark" %>
+              <%= link_to t('buttons.editar_perfil'), edit_user_registration_path(@user), class: "btn btn-outline-dark ms-1" %>
+              <%= link_to t('buttons.editar_senha'), change_password_path(@user), class: "btn btn-outline-dark ms-1" %>
               <%= link_to "Posts", posts_details_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
               <%= link_to t('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
               <%= link_to "Upload Post",upload_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
