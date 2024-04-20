@@ -12,13 +12,13 @@ class PostsController < ApplicationController
   end
 
   def create_upload_post
-    params[:post][:body] = ::Upload::ProcessTxt.new(params[:post][:body]).execute if params[:post][:body].present?
-    @post = Post.new(post_params)
-    sleep 5
+    @post = ::Upload::ProcessTxt.new(params[:post][:body]).execute
+    @post[:user_id] = params[:post][:user_id]
+    sleep 2
     
-    job = ProcessPostJob.set(wait: 30.seconds).perform_later(@post.titulo, @post.body, @post.tag_ids, @post.user_id)
+    job = ProcessPostJob.set(wait: 20.seconds).perform_later(@post[:titulo], @post[:body], @post[:tag_ids], @post[:user_id])
     if job.successfully_enqueued?
-      redirect_to posts_details_path, notice: "Post enviado com sucesso! Aguarde a conclusão do processamento."
+      redirect_to posts_details_path, notice: "Post enviado com sucesso! Em alguns segundos estara disponivel na sua home."
     else
       redirect_to posts_details_path, notice: "Falha ao enfileirar o post. Erro: #{job.error}"
     end

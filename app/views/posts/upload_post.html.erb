@@ -16,15 +16,6 @@
         <% end %>
         <%= form.hidden_field :user_id, value: current_user.id %>
         <div class="mb-3">
-          <%= form.label :titulo , class: "form-label" %>
-          <%= form.text_field :titulo, class: "form-control", required: true %>
-        </div>
-        <div class="mb-3">
-          <%= form.label "Tags" %>
-          <%= form.select :tag_ids, options_for_select(Tag.all.map { |tag| [tag.nome, tag.id] }, params[:tag_ids]), { include_hidden: false }, { class: "form-select", multiple: true, id: "tag-dropdown", required: true } %>
-        </div>
-        <div id="selected-tags"></div>
-        <div class="mb-3">
           <%= form.label :body, class: "form-label" %>
           <%= form.file_field :body, class: "form-control", required: true %>
         </div>
