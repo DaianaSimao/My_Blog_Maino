@@ -277,6 +277,8 @@ pt-BR:
     sobre_voce: "Digite algo sobre você"
     cadastrar: "Cadastrar"
     registre_se: "Inscreva-se"
+    digite_email: "Digite seu e-mail"
+    enviar_redefinicao: "Enviar-me instruções para redefinir a senha"
     posts:
       new:
         create_post: "Criar Post"

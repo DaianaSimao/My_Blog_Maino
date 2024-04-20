@@ -267,6 +267,8 @@ en:
     sobre_voce: "Type something about yourself"
     cadastrar: "Register"
     registre_se: "Register"
+    digite_email: "Type your email"
+    enviar_redefinicao: "Send me instructions for resetting your password"
     posts:
       new:
         create_post: "Criar Post"
