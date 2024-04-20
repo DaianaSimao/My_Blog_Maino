@@ -12,7 +12,7 @@
   <% end %>
   <div class="container px-5 my-5">
     <h1 class="display-5 fw-bolder"><%= t('.create_post') %></h1>
-    <div class="card">
+    <div class="card col-10">
       <div class="card-body">
         <%= form_with(model: @post, local: true) do |form| %>
           <%= form.hidden_field :user_id, value: current_user.id %>
@@ -23,14 +23,16 @@
           </div>
 
           <div class="mb-3">
-            <%= form.label "Tags" %>
-            <%= form.select :tag_ids, options_for_select(Tag.all.map { |tag| [tag.nome, tag.id] }, params[:tag_ids]), { include_hidden: false }, { class: "form-select", multiple: true, id: "tag-dropdown", required: true } %>
-          </div>
-          <div id="selected-tags"></div>
-          <div class="mb-3">
             <%= form.label :body, class: "form-label" %>
             <%= form.text_area :body, class: "form-control", rows: 8, id: "text-body", required: true %>
           </div>
+
+          <div class="mb-3 col-md-4">
+            <%= form.label "Tags" %>
+              <i class="bi bi-question-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top"data-bs-title="Pressione Ctrl para selecionar várias tags"></i>
+            <%= form.select :tag_ids, options_for_select(Tag.all.map { |tag| [tag.nome, tag.id] }, params[:tag_ids]), { include_hidden: false }, { class: "form-select mt-3", multiple: true, id: "tag-dropdown", required: true } %>
+          </div>
+          <div id="selected-tags"></div>
           <div class="mb-3">
             <%= form.submit class: "btn btn-outline-dark", data: { turbo: false } %>
             <%= link_to "Home", home_index_path, class: "btn btn-outline-dark ms-2" %>
@@ -44,3 +46,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <% end %>
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
