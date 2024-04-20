@@ -20,6 +20,7 @@
             <div class="form-data">
               <%= f.label "Email" %><br />
               <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control w-100" %>
+              <%= f.hidden_field :locale, value: I18n.locale %>
             </div>
             <div class="signin-btn w-100 mt-2" style="margin-botton: 10px;">
               <%= f.submit t('views.enviar_redefinicao'), class: "btn btn-outline-dark" %>
