@@ -6,10 +6,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Blog Post - Start Bootstrap Template</title>
-    <!-- Favicon-->
+
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Page content-->
@@ -74,21 +72,21 @@
           </div>
           <!-- Categories widget-->
           <div class="card mb-4">
-            <div class="card-header">Categories</div>
+            <div class="card-header">Tags em alta</div>
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-6">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#!">Web Design</a></li>
-                    <li><a href="#!">HTML</a></li>
-                    <li><a href="#!">Freebies</a></li>
+                    <li class="tags-animadas"><%= @top_tags[0].nome %></li>
+                    <li class="tags-animadas"><%= @top_tags[1].nome %></a></li>
+                    <li class="tags-animadas"><%= @top_tags[2].nome %></a></li>
                   </ul>
                 </div>
                 <div class="col-sm-6">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#!">JavaScript</a></li>
-                    <li><a href="#!">CSS</a></li>
-                    <li><a href="#!">Tutorials</a></li>
+                    <li class="tags-animadas"><%= @top_tags[3].nome %></li>
+                    <li class="tags-animadas"><%= @top_tags[4].nome %></li>
+                    <li class="tags-animadas"><%= @top_tags[5].nome %></li>
                   </ul>
                 </div>
               </div>
@@ -99,3 +97,21 @@
     </div>
   </body>
 </html>
+<style>
+.tags-animadas {
+  color: rgb(76, 79, 76);
+  animation: animate 2.7s linear infinite;
+  font-weight: bold;
+}
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+</style>
