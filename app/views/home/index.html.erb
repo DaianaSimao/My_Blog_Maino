@@ -21,9 +21,16 @@
             <!-- Post header-->
             <header class="mb-4">
               <!-- Post title-->
-              <h1 class="fw-bolder mb-1"><%= t('views.welcome') %></h1><br><br>
+              
+              <h1 class="fw-bolder mb-1">
+                <%= t('views.welcome') %>
+                <% if user_signed_in? %>
+                  <%= current_user.perfil.nome%>!
+                <% end %>
+                </h1><br><br>
               <% if user_signed_in? %>
                 <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
+                <%= link_to "Upload Post",upload_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
               <br><br>
               <% end %>
               <% @posts.each do |post| %>

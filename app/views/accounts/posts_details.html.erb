@@ -11,7 +11,10 @@
             <header class="mb-4">
               <!-- Post title-->
               <br>
-              <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
+              <% if user_signed_in? %>
+                <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
+                <%= link_to "Upload Post",upload_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
+              <% end %>
               <br>
               <br>
               <% @posts.each do |post| %>
