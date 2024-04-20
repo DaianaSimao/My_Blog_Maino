@@ -129,57 +129,57 @@ body {
 .digg_pagination {
   background: rgb(198, 186, 186);
   cursor: default;
-  /* self-clearing method: */ }
-  .digg_pagination a, .digg_pagination span, .digg_pagination em {
-    padding: 0.2em 0.5em;
-    display: block;
-    float: left;
-    margin-right: 1px; }
-  .digg_pagination .disabled {
-    color: black;
-    border: 1px solid black; }
-  .digg_pagination .current {
-    font-style: normal;
-    font-weight: bold;
-    background: #6c757d;
-    color: white; //nao é ssa
-    border: 1px solid white; }
-  .digg_pagination a {
-    text-decoration: none;
-    color: black;
-    border: 1px solid black; }
-    .digg_pagination a:hover, .digg_pagination a:focus {
-      color: #000033;
-      border-color: #8383b7; }
-  .digg_pagination .page_info {
+}
+.digg_pagination a, .digg_pagination span, .digg_pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px; }
+.digg_pagination .disabled {
+  color: black;
+  border: 1px solid black; }
+.digg_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #6c757d;
+  color: white; //nao é ssa
+  border: 1px solid white; }
+.digg_pagination a {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black; }
+  .digg_pagination a:hover, .digg_pagination a:focus {
+    color: #000033;
+    border-color: #8383b7; }
+.digg_pagination .page_info {
+  background: white;
+  color: black;
+  padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  text-align: center; }
+  .digg_pagination .page_info b {
+    color: #000033;
     background: white;
-    color: black;
-    padding: 0.4em 0.6em;
-    width: 22em;
-    margin-bottom: 0.3em;
-    text-align: center; }
-    .digg_pagination .page_info b {
-      color: #000033;
-      background: white;
-      padding: 0.1em 0.25em; }
-  .digg_pagination:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden; }
-  * html .digg_pagination {
-    height: 1%; }
-  *:first-child + html .digg_pagination {
-    overflow: hidden; }
+    padding: 0.1em 0.25em; }
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+* html .digg_pagination {
+  height: 1%; }
+*:first-child + html .digg_pagination {
+  overflow: hidden; }
 
-    // Estilo das tags
-    .tag {
-      display: inline-block;
-      margin-right: 5px; 
-      margin-bottom: 5px; 
-      padding: 2px 5px; 
-      background-color: #6c757d;
-      color: white; 
-      border-radius: 5px; 
-    }
+// Estilo das tags
+.tag {
+  display: inline-block;
+  margin-right: 5px; 
+  margin-bottom: 5px; 
+  padding: 2px 5px; 
+  background-color: #6c757d;
+  color: white; 
+  border-radius: 5px; 
+}
