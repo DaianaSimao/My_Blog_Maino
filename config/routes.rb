@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     unlocks: "users/unlocks",
     passwords: "users/passwords",
    }
+
+   get '/change_password', to: 'passwords#edit', as: 'change_password'
+   patch '/update_password', to: 'passwords#update', as: 'update_password'
+
   get "home/index"
   root "home#index"
   get '/search_suggestions', to: 'home#search_suggestions'
