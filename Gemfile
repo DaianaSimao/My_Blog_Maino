@@ -19,6 +19,7 @@ gem "devise"
 gem 'will_paginate', '~> 4.0'
 gem 'i18n'
 gem 'redis-rails'
+gem 'faker'
 
 group :development, :test do
 
