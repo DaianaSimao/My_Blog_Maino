@@ -23,6 +23,7 @@ gem 'faker'
 gem 'simplecov', require: false
 gem 'rspec-rails'
 gem 'capybara'
+gem 'factory_bot_rails'
 
 group :development, :test do
 
