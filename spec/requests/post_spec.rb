@@ -42,4 +42,18 @@ RSpec.describe "Posts", type: :request do
       expect(Post.all).to eq([])
     end
   end
+  describe "POST #create_upload_post" do
+    context "with valid parameters" do
+      let(:user) { create(:user) } # Cria um usuário usando FactoryBot
+      let(:valid_params) do
+        {
+          post: {
+            body: "Lorem ipsum dolor sit amet",
+            user_id: user.id # Passa o ID do usuário criado
+            # Adicione outros parâmetros necessários aqui
+          }
+        }
+      end
+    end
+  end
 end
