@@ -32,7 +32,9 @@
             </header>
             <section class="mb-5">
               <p class="fs-5 mb-4"><%= @post.body %></p>
-              <%= link_to t('views.editar_post'), edit_post_path(@post) , class: "mb-5 btn btn-outline-dark" %>
+              <% if user_signed_in? && current_user.id == @post.user_id %>
+                <%= link_to t('views.editar_post'), edit_post_path(@post) , class: "mb-5 btn btn-outline-dark" %>
+              <% end %>
             </section>
           </article>
           <section class="mb-5">

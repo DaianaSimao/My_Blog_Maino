@@ -25,21 +25,21 @@
                <%= f.fields_for :perfil_attributes, @perfil do |perfil_form| %>
                   <div class="form-data">
                     <%= perfil_form.label t('views.nome') %><br />
-                    <%= perfil_form.text_field :nome, placeholder: t('views.nome'), class: "form-control w-100" %>
+                    <%= perfil_form.text_field :nome, placeholder: t('views.nome'), class: "form-control w-100", required: true %>
                   </div>
                   <div class="form-data">
                     <%= perfil_form.label t('views.sobrenome') %><br />
-                    <%= perfil_form.text_field :sobrenome, placeholder: t('views.sobrenome'), class: "form-control w-100" %>
+                    <%= perfil_form.text_field :sobrenome, placeholder: t('views.sobrenome'), class: "form-control w-100", required: true %>
                   </div>
                   <div class="form-data">
                     <%= perfil_form.label t('views.bio') %><br />
-                    <%= perfil_form.text_area :bio, placeholder: t('views.bio'), class: "form-control w-100" %>
+                    <%= perfil_form.text_area :bio, placeholder: t('views.bio'), class: "form-control w-100", required: true %>
                   </div>
                 <% end %>
 
               <div class="form-data">
                 <%= f.label :password %> <i>(<%= t('views.confirmar_alteracao')%>)</i><br />
-                <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control w-100" %>
+                <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control w-100", required: true %>
               </div>
 
                 <div class="d-flex justify-content-between w-100 align-items-center">
