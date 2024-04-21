@@ -36,7 +36,7 @@
               <!-- Post meta content-->
               <div class="text-muted fst-italic mb-2">
                   <%= t('views.posted') %> <%= l(post.created_at) %> 
-                  <%= t('views.by') %> <%= post.user.perfil.nome.capitalize %>
+                  <%= t('views.by') %> <%= post.user.perfil.nome.capitalize rescue nil %>
               </div>
               <!-- Post categories-->
               <% post.tags.each do |tag|%>

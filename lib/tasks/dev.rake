@@ -28,7 +28,12 @@ namespace :dev do
       { titulo: "Domine os fundamentos das finanças pessoais", body: "Domine os fundamentos das finanças pessoais e assuma o controle do seu futuro financeiro. Com conhecimento e planejamento, você pode construir uma base sólida para a segurança financeira e a liberdade.", tags: "Finanças, Educação" },
       { titulo: "Descubra como os influenciadores moldam tendências", body: "Descubra como os influenciadores estão moldando as tendências e inspirando milhões ao redor do mundo. Através das mídias sociais, suas vozes ressoam e criam impacto em comunidades online e além.", tags: "Influenciadores, Humor" },
       { titulo: "Abraçar um estilo de vida sustentável é mais do que uma tendência", body: "Abraçar um estilo de vida sustentável é mais do que uma tendência; é um compromisso com o futuro do nosso planeta. Ao reconhecer e valorizar a diversidade cultural, podemos construir um mundo mais inclusivo e sustentável para as gerações futuras.", tags: "Sustentabilidade, Cultura" },
-      { titulo: "Explore a interseção entre design e arquitetura", body: "Explore a interseção entre design e arquitetura, onde cada espaço é uma expressão de criatividade e funcionalidade. Dos arranha-céus imponentes às casas minimalistas, o design transforma o ambiente ao nosso redor.", tags: "Design, Arquitetura" }
+      { titulo: "Explore a interseção entre design e arquitetura", body: "Explore a interseção entre design e arquitetura, onde cada espaço é uma expressão de criatividade e funcionalidade. Dos arranha-céus imponentes às casas minimalistas, o design transforma o ambiente ao nosso redor.", tags: "Design, Arquitetura" },
+      { titulo: "Descubra o mundo: uma jornada de descoberta e aventura",body: "Embarque em uma jornada épica ao redor do globo e descubra os destinos mais incríveis que o mundo tem a oferecer. Das praias paradisíacas às montanhas imponentes, cada lugar é uma nova aventura esperando para ser explorada. Prepare-se para se maravilhar com paisagens deslumbrantes, mergulhar em culturas fascinantes e criar memórias que durarão para sempre. A viagem dos seus sonhos está apenas começando!",tags: "Viagens"},
+      { titulo: "Aprenda algo novo todos os dias: o poder do conhecimento", body: "Nunca é tarde demais para começar a aprender algo novo. Explore novos campos de estudo, aprofunde-se em suas paixões e amplie seus horizontes intelectuais. Com uma variedade infinita de cursos, livros e recursos disponíveis, o único limite é a sua própria curiosidade. Então, pegue seus cadernos, abra sua mente e embarque em uma jornada de descoberta e crescimento pessoal. O conhecimento está ao seu alcance.", tags: "Estudo"},
+      { titulo: "Mestre suas habilidades: tutoriais para o sucesso", body: "Deseja aprimorar suas habilidades em um novo campo? Procurando por dicas e truques para dominar uma técnica específica? Não procure mais! Nossos tutoriais abrangem uma ampla gama de tópicos, desde programação e design até culinária e música. Com passos claros e instruções detalhadas, você estará no caminho para o sucesso em pouco tempo. Então, pegue suas ferramentas e vamos começar a aprender!", tags: "Tutoriais"
+        }
+
     ]
 
     posts.each do |post_data|
@@ -40,9 +45,7 @@ namespace :dev do
         tags << tag.id
       end
       user_ids = User.pluck(:id)
-      user_ids.each do |user_id|
-        post = Post.create!(titulo: post_data[:titulo], body: post_data[:body], user_id: user_id, tag_ids: tags)
-      end
+      Post.create!(titulo: post_data[:titulo], body: post_data[:body], user_id: user_ids.sample, tag_ids: tags)
     end
 
     puts "Posts criados com sucesso!"
@@ -69,5 +72,10 @@ namespace :dev do
     end
 
     puts "Usuários e perfis criados com sucesso!"
+  end
+
+  desc "Apaga todos os registros de posts"
+  task delete_posts: :environment do
+    Post.destroy_all
   end
 end
