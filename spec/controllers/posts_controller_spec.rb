@@ -49,11 +49,13 @@ RSpec.describe PostsController, type: :controller do
       let(:invalid_params) { { titulo: nil, body: 'Body of the new post' } }
 
       it 'does not create a new post' do
+        user = create(:user)
+        sign_in user
         expect {
           post :create, params: { post: invalid_params }
         }.to_not change(Post, :count)
+        expect(response).to render_template(:new)
       end
-
       it 'renderiza o template new com status unprocessable_entity' do
         user = create(:user)
         sign_in user
