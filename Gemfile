@@ -20,6 +20,9 @@ gem 'will_paginate', '~> 4.0'
 gem 'i18n'
 gem 'redis-rails'
 gem 'faker'
+gem 'simplecov', require: false
+gem 'rspec-rails'
+gem 'capybara'
 
 group :development, :test do
 
