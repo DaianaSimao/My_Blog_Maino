@@ -14,7 +14,6 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  require 'capybara/rails'
   require 'simplecov'
   SimpleCov.start
   # rspec-expectations config goes here. You can use an alternate
