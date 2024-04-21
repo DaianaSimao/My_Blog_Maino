@@ -270,6 +270,7 @@ en:
     digite_email: "Type your email"
     enviar_redefinicao: "Send me instructions for resetting your password"
     nova_senha: "New Password"
+    mensagem_deletar: "Are you sure you want to delete this post?"
     posts:
       new:
         create_post: "Criar Post"
@@ -278,5 +279,6 @@ en:
     comment: "Comment"
     editar_perfil: "Edit Profile"
     editar_senha: "Edit Password"
+    deletar_post: "Delete Post"
   passwords:
     senha_alterada: "Your password has been changed successfully."

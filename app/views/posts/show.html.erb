@@ -33,7 +33,10 @@
             <section class="mb-5">
               <p class="fs-5 mb-4"><%= @post.body %></p>
               <% if user_signed_in? && current_user.id == @post.user_id %>
-                <%= link_to t('views.editar_post'), edit_post_path(@post) , class: "mb-5 btn btn-outline-dark" %>
+              <div class="d-flex justify-content-start">
+                <%= link_to t('views.editar_post'), edit_post_path(@post) , class: "btn btn-outline-primary "%>
+                <%= button_to t('views.deletar_post'), @post, method: :delete, data: { turbo_confirm: t('views.mensagem_deletar') }, class: "btn btn-outline-danger", style: "margin-left: 10px;" %>
+              </div>
               <% end %>
             </section>
           </article>

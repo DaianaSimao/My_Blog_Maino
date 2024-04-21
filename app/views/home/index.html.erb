@@ -27,8 +27,8 @@
                 <% end %>
                 </h1><br><br>
               <% if user_signed_in? %>
-                <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
-                <%= link_to "Upload Post",upload_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
+                <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-success ms-1", data: { turbo: false } %>
+                <%= link_to "Upload Post",upload_post_path, class: "btn btn-outline-primary ms-1", data: { turbo: false } %>
               <br><br>
               <% end %>
               <% @posts.each do |post| %>
@@ -56,7 +56,7 @@
         <!-- Side widgets-->
         <div class="col-lg-4">
           <!-- Search widget-->
-          <div class="card mb-4">
+          <div class="card mb-4 " style="background-color: #DCDCDC;">
             <div class="card-header"><%= t('views.pesquisar_tags')%></div>
             <%= form_tag home_index_path, method: 'get', data: { turbo: false }  do %>
               <div class="card-body">
@@ -71,7 +71,7 @@
             <% end %>
           </div>
           <!-- Categories widget-->
-          <div class="card mb-4">
+          <div class="card mb-4" style="background-color: #DCDCDC;">
             <div class="card-header">Tags em alta</div>
             <div class="card-body">
               <div class="row">
@@ -99,7 +99,7 @@
 </html>
 <style>
 .tags-animadas {
-  color: rgb(76, 79, 76);
+  color: #6959CD;
   animation: animate 2.7s linear infinite;
   font-weight: bold;
 }
