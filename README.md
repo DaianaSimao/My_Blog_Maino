@@ -83,8 +83,10 @@ Não podendo assim, usufruir das funcionalidades relacionadas aos usuários cada
 
 ###
 
-<h4 align="left">:green_circle: 1 - Testes automatizados simples.</h4>
+<h4 align="left">:green_circle: 1 - Testes simples e automatizados.</h4>
 <h5>✨ A plataforma implementou testes com auxílio do Respec, usando FactoryBot para instâncias dos models, e SimpleCov para acompanhar a cobertura do código do projeto.</h5>
+<h5> ✨✨ Todas as solicitações de PR abertos para a main, passam por testes antes do merge, usando o githubActions</h5>
+<h5>:camera_flash: https://drive.google.com/file/d/1HHz4E6LFvO2GWxlrO8CibjtOl1Fi72nJ/view?usp=drive_link</h5> 
 
 <h4 align="left">:green_circle: 2 - Internacionalização.</h4>
 <h5>✨ A plataforma viabiliza a tradução de todos os campos relacionados a usabilidade do usuário, fornecendo mais acessibilidade, assim como em futuras implementações.</h5>
