@@ -12,8 +12,8 @@
               <!-- Post title-->
               <br>
               <% if user_signed_in? %>
-                <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
-                <%= link_to "Upload Post",upload_post_path, class: "btn btn-outline-dark ms-1", data: { turbo: false } %>
+                <%= link_to I18n.translate('buttons.new_post'),new_post_path, class: "btn btn-outline-success ms-1", data: { turbo: false } %>
+                <%= link_to "Upload Post",upload_post_path, class: "btn btn-outline-primary ms-1", data: { turbo: false } %>
               <% end %>
               <br>
               <br>
