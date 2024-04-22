@@ -1,7 +1,6 @@
 class UserMailer < ActionMailer::Base
   def reset_password_instructions(record, token, opts = {})
     locale = I18n.locale
-    binding.pry
     @token = token
     @resource = record
     subject = if locale == :pt
