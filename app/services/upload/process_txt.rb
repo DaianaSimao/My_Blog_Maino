@@ -26,23 +26,8 @@ module Upload
       end
 
       txt_file.close
-      post[:tag_ids] = save_tags(post[:tag_ids])
+      post[:tag_ids] = Tag.new.salvar_tags(post[:tag_ids])
       post
-    end
-
-    def save_tags(tags)
-      tags_post = []
-      tags_names = tags.split(",").map(&:strip)
-      tags_names.each do |tag_name|
-        tag = Tag.where("nome ILIKE ?", "%#{tag_name}%").first
-        if tag.nil?
-          tag = Tag.create(nome: tag_name.strip)
-          tags_post << tag.id
-        else 
-          tags_post << tag.id
-        end
-      end
-      tags_post
     end
   end
 end
