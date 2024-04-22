@@ -35,7 +35,7 @@
                   Remember me </label> </div>
             </div>
             <div class="signin-btn w-100 mt-2">
-              <%= f.submit t('views.entrar'), class: "btn btn-outline-dark" %>
+              <%= f.submit t('views.entrar'), class: "btn btn-outline-dark", data: {turbo: false} %>
               <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
                 <%= link_to t('views.esqueceu_senha'), new_password_path(resource_name), class: "btn btn-outline-dark" %><br />
               <% end %>
