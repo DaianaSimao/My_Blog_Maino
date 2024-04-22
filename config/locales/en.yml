@@ -283,10 +283,10 @@ en:
     deletar_post: "Delete Post"
   passwords:
     senha_alterada: "Your password has been changed successfully."
-    posts:
-    criado: "Post created successfully!"
-    atualizado: "Post updated successfully!"
-    deletado: "Post deleted successfully!"
+  posts:
+      criado: "Post created successfully!"
+      atualizado: "Post updated successfully!"
+      deletado: "Post deleted successfully!"
   will_paginate:
     previous_label: "&#8592; Previous"
     previous_aria_label: "Previous page"
