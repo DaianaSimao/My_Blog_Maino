@@ -280,7 +280,8 @@ pt-BR:
     digite_email: "Digite seu e-mail"
     enviar_redefinicao: "Enviar-me instruções para redefinir a senha"
     nova  senha: "Nova Senha"
-    mensagem_deletar: "Você tem certeza que deseja deletar este post?" 
+    mensagem_deletar: "Você tem certeza que deseja deletar este post?"
+    top_tags: "Tags em alta"
     posts:
       new:
         create_post: "Criar Post"
@@ -296,5 +297,13 @@ pt-BR:
     criado: "Post criado com sucesso!"
     atualizado: "Post atualizado com sucesso!"
     deletado: "Post deletado com sucesso!"
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    previous_aria_label: "Página anterior"
+    next_label: "Próximo &#8594;"
+    next_aria_label: "Próxima página"
+    page_gap: "&hellip;"
+    container_aria_label: "Paginação"
+    page_aria_label: "Página %{page}"
   
   
