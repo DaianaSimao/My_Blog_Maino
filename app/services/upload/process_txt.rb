@@ -26,7 +26,7 @@ module Upload
       end
 
       txt_file.close
-      post[:tag_ids] = Tag.new.salvar_tags(post[:tag_ids])
+      post[:tag_ids] = Tag.new.criar_tags(post[:tag_ids])
       post
     end
   end
