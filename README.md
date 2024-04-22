@@ -56,6 +56,9 @@ Não podendo assim, usufruir das funcionalidades relacionadas aos usuários cada
 <h4 align="left">:green_circle: 6 - Recuperar senha.</h4>
 <h5>✨ A plataforma permite que em caso de perda da senha, o usuário possa recuperar sua conta através de e-mail recuperação,
     enviado pelo sistema my blog contendo os passos para alteração de senha.</h5>
+    
+<h5>✨✨ Os e-mails de recuperação de senha, são enviados de acordo com o idioma que estiver aplicado no momento da solicitação.</h5>
+
 <h2 align="left">Funcionalidades Area Logada</h2>
 
 ###
@@ -106,16 +109,20 @@ Não podendo assim, usufruir das funcionalidades relacionadas aos usuários cada
 ###
 
 <h4 align="left">:green_circle: 1 - Upload de arquivos TXT para criação de posts ou tags (utilizando Sidekiq para processamento assíncrono).</h4>
+
 <h5>✨ A plataforma possui a implementação de job em background, para envio de arquivos txt, para posts automatizados, que se encontra localizado na HOME do usuário, ou na aba MEU PERFIL, possibilitando fácil acesso a função. O job irá fazer o mapeamento dos campos, no caso de posts automáticos via arquivo txt.  Os campos são validados em background, e entram em fila através do siderkiq, após o usuário concluir o envio do arquivo, é redirecionado a HOME, onde verá a notificação : em alguns segundos seus post estará disponível para ser visualizado.</h5>
 
 <h4 align="left">🎯 2 - Deploy Fly.io.</h4>
+
 <h5>:earth_americas: https://my-blog-maino.fly.dev</h5>
+
 <h5>Por ser uma hospedagem gratuita, a uma nessecidade de espera ate que o servidor, start a aplicação</h5>
+
 <h2 align="left">📚 Sobre o desenvolvimento:</h2>
 
 ###
 
-<h4 align="left">Ao desenvolver a aplicação me deparei com a dificuldade de implementação do Sikerkiq, não estava familiarizada com a ferramenta, mas valeu muito a pena aprender, não somente em quais contextos ela é utilizada, mas tambem como implementa-la na minha aplicação. No geral o projeto é satisfatório,atendendo aos requisitos solicitados, assim como a possibilidades de implementação das melhorias destacadas nos pontos acima.
-<h4>:atom: TESTES: No quesito teste optei por usar o RESPEC em conjunto com SIMPLECOV para acompanhar a cobertura de código. Vale ressaltar o uso do FACTORYBOT para instânciar os modelos oque facilita bastante na hora de escrever os testes. Os impedimentos encontrados, a que vale destacar; os testes de uso das Controllers, pela falta da abrangência de métodos e formas para aplicar os mesmos. No geral a perfeição dessa aplicação é relacionada ao tempo, mas ainda assim como destacado a cima, cumpre os requisitos solicitados..</h4>
+<h4 align="left"> Ao desenvolver a aplicação me deparei com a dificuldade de implementação do Sikerkiq, não estava familiarizada com a ferramenta, mas valeu muito a pena aprender, não somente em quais contextos ela é utilizada, mas tambem como implementa-la na minha aplicação. O desenvolvimento segue boas práticas de envio de commits, distribuídos em branches para facilitar o controle de versão do código. No geral o projeto é satisfatório, atendendo aos requisitos solicitados, assim como a possibilidades de implementação das melhorias destacadas nos pontos acima >> ✨✨.
+TESTES: No quesito teste, optei por usar o RESPEC em conjunto com SIMPLECOV para acompanhar a cobertura de código, ao acionar o github actions estou na tentavia tambem para acompanhamentos futuros, de implementar a gem do simplecov que fornece o coverage do codigo, e um json, mas sem a necessidade de geração de arquivos adicionais. Essa parte da implementação do actions foi super legal, ja havia aplicado como deploy continuo, mas nunca para um controle de testes, conheci novas gems que ajudam no controle de segurança e vulnerabilidades. Vale ressaltar o uso do FACTORYBOT para instânciar os modelos oque facilita bastante na hora de escrever os testes. Os impedimentos encontrados, a que valem destacar; os testes de uso das Controllers, pela falta da minha abrangência de métodos e formas para aplicar os mesmos. No geral a perfeição dessa aplicação é relacionada ao tempo, mas ainda assim como destacado a cima, cumpre os requisitos solicitados.</h4>
 
 ###
