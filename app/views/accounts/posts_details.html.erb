@@ -36,7 +36,7 @@
                <div class="d-flex justify-content-start mb-4">
                 <%= link_to t('buttons.comment'), post_path(post), class: "btn btn-outline-dark" %>
                 <% if user_signed_in? && current_user.id == post.user_id %>
-                  <%= button_to t('views.deletar_post'), post, method: :delete, data: { turbo_confirm: t('views.mensagem_deletar') }, class: "btn btn-outline-danger", style: "margin-left: 10px;" %>
+                  <%= button_to t('buttons.deletar_post'), post, method: :delete, data: { turbo_confirm: t('views.mensagem_deletar') }, class: "btn btn-outline-danger", style: "margin-left: 10px;" %>
                 <% end %>
               </div>
             </article>
@@ -57,6 +57,22 @@
                               <%= comentario.body %>
                             </div>
                           </div>
+                          <% if user_signed_in? && current_user.id == comentario.user_id%>
+                            <div class="ms-5 mt-2 d-flex justify-content-end">
+                              <%= link_to edit_comentario_path(comentario), class: "btn btn-outline-primary btn-sm me-2", style: "width: 32px; height: 31px" do  %>
+                                <i class="bi bi-pencil-square"></i>
+                              <% end %>
+                              <%= button_to comentario, method: :delete, data: { turbo_confirm: "Tem certeza que deseja excluir este comentário?" }, class: "btn btn-outline-danger btn-sm" do %>
+                                <i class="bi bi-trash"></i>
+                              <% end %>
+                            </div>
+                          <% elsif user_signed_in? && current_user.id == post.user_id %>
+                            <div class="ms-5 mt-2 d-flex justify-content-end">
+                              <%= button_to comentario, method: :delete, data: { turbo_confirm: t('views.deletar_comentario') }, class: "btn btn-outline-danger btn-sm" do %>
+                                <i class="bi bi-trash"></i>
+                              <% end %>
+                            </div>
+                          <% end %>
                         </div>
                       </div>
                     <% end %>
