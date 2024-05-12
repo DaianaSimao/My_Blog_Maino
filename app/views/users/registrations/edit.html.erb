@@ -32,6 +32,10 @@
                     <%= perfil_form.text_field :sobrenome, placeholder: t('views.sobrenome'), class: "form-control w-100", required: true %>
                   </div>
                   <div class="form-data">
+                    <%= perfil_form.label t('views.upload_avatar') %><br />
+                    <%= perfil_form.file_field :avatar, placeholder: t('views.upload_avatar'), class: "form-control w-100" %>
+                  </div>
+                  <div class="form-data">
                     <%= perfil_form.label t('views.bio') %><br />
                     <%= perfil_form.text_area :bio, placeholder: t('views.bio'), class: "form-control w-100", required: true %>
                   </div>
