@@ -48,6 +48,57 @@
             </section>
             <%= link_to t('buttons.comment'), post_path(post) , class: "mb-5 btn btn-outline-dark" %>
           </article>
+          <section class="mb-5">
+            <div class="card bg-light">
+              <div class="card-body">
+                <div class="comments-container" style="max-height: 300px; overflow-y: auto;">
+                <% if post.comentarios.any? %>
+                  <% post.comentarios.each do |comentario| %>
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <div class="d-flex mb-2">
+                          <div class="flex-shrink-0">
+                            <%= exibir_avatar(comentario.user_id, 45, 50) %>
+                          </div>
+                          <div class="ms-3">
+                            <div class="fw-bold"><%= comentario.autor %></div>
+                            <%= comentario.body %>
+                          </div>
+                        </div>
+                        <% if user_signed_in? && current_user.id == comentario.user_id%>
+                          <div class="ms-5 mt-2 d-flex justify-content-end">
+                            <%= link_to edit_comentario_path(comentario), class: "btn btn-outline-primary btn-sm me-2", style: "width: 32px; height: 31px" do  %>
+                              <i class="bi bi-pencil-square"></i>
+                            <% end %>
+                            <%= button_to comentario, method: :delete, data: { turbo_confirm: "Tem certeza que deseja excluir este comentário?" }, class: "btn btn-outline-danger btn-sm" do %>
+                              <i class="bi bi-trash"></i>
+                            <% end %>
+                          </div>
+                        <% elsif user_signed_in? && current_user.id == post.user_id %>
+                          <div class="ms-5 mt-2 d-flex justify-content-end">
+                            <%= button_to comentario, method: :delete, data: { turbo_confirm: "Tem certeza que deseja excluir este comentário?" }, class: "btn btn-outline-danger btn-sm" do %>
+                              <i class="bi bi-trash"></i>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <div class="d-flex mb-2">
+                        <div class="ms-3">
+                          <div class="fw-bold"><%= t('views.nenhum_comentario') %></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </section>
         <% end %>
         <div class="digg_pagination mb-5">
           <%= will_paginate @posts , page_links: true %>
