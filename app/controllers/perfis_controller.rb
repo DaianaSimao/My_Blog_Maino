@@ -65,6 +65,6 @@ class PerfisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def perfil_params
-      params.require(:perfil).permit(:nome, :sobrenome, :user_id)
+      params.require(:perfil).permit(:nome, :sobrenome, :user_id, :avatar)
     end
 end
