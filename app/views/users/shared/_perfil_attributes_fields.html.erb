@@ -8,6 +8,11 @@
     <%= perfil_fields.text_field :sobrenome, placeholder: t('views.sobrenome'), class: "form-control w-100", required: true %>
   </div>
   <div class="form-data">
+    <%= perfil_fields.label t('views.upload_avatar') %><br />
+    <%= perfil_fields.file_field :avatar, class: "d-none", id: "avatar_input" %>
+    <%= button_tag t('buttons.escolher_arquivo'), type: 'button', class: " w-100 btn btn-outline-primary", onclick: "document.getElementById('avatar_input').click();" %>
+  </div>
+  <div class="form-data">
     <%= perfil_fields.label t('views.bio') %><br />
     <%= perfil_fields.text_area :bio, placeholder: t('views.sobre_voce'), class: "form-control w-100", required: true %>
   </div>

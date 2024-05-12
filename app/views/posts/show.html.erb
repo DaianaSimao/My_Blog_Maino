@@ -61,13 +61,29 @@
                       <div class="card-body">
                         <div class="d-flex mb-2">
                           <div class="flex-shrink-0">
-                            <%= image_tag("perfil.png", width: 45, height: 50, class: "rounded-circle") %>
+                          <%= exibir_avatar(comentario.user_id, 45, 50) %>
                           </div>
                           <div class="ms-3">
                             <div class="fw-bold"><%= comentario.autor %></div>
                             <%= comentario.body %>
                           </div>
                         </div>
+                        <% if user_signed_in? && current_user.id == comentario.user_id%>
+                          <div class="ms-5 mt-2 d-flex justify-content-end">
+                            <%= link_to edit_comentario_path(comentario), class: "btn btn-outline-primary btn-sm me-2", style: "width: 32px; height: 31px" do  %>
+                              <i class="bi bi-pencil-square"></i>
+                            <% end %>
+                            <%= button_to comentario, method: :delete, data: { turbo_confirm: "Tem certeza que deseja excluir este comentário?" }, class: "btn btn-outline-danger btn-sm" do %>
+                              <i class="bi bi-trash"></i>
+                            <% end %>
+                          </div>
+                        <% elsif user_signed_in? && current_user.id == @post.user_id %>
+                          <div class="ms-5 mt-2 d-flex justify-content-end">
+                            <%= button_to comentario, method: :delete, data: { turbo_confirm: "Tem certeza que deseja excluir este comentário?" }, class: "btn btn-outline-danger btn-sm" do %>
+                              <i class="bi bi-trash"></i>
+                            <% end %>
+                          </div>
+                        <% end %>
                       </div>
                     </div>
                   <% end %>

@@ -25,6 +25,7 @@ pt-BR:
         nome: "Nome"
         sobrenome: "Sobrenome"
         bio: "Biografia"
+        avatar: "Escolha o arquivo"
       comentario:
         body: "Comentário"
         autor: "Autor"
@@ -282,6 +283,8 @@ pt-BR:
     nova  senha: "Nova Senha"
     mensagem_deletar: "Você tem certeza que deseja deletar este post?"
     top_tags: "Tags em alta"
+    upload_avatar: "Faça o upload de sua foto de perfil"
+    deletar_comentario: "Você tem certeza que deseja deletar este comentário?"
     posts:
       new:
         create_post: "Criar Post"
@@ -291,6 +294,7 @@ pt-BR:
     editar_perfil: "Editar Perfil"
     editar_senha: "Editar Senha"
     deletar_post: "Deletar Post"
+    escolher_arquivo: "Escolha uma imagem"
   passwords:
     senha_alterada: "Sua senha foi alterada com sucesso. Você agora está conectado."
   posts:
