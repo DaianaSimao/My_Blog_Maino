@@ -284,6 +284,7 @@ pt-BR:
     mensagem_deletar: "Você tem certeza que deseja deletar este post?"
     top_tags: "Tags em alta"
     upload_avatar: "Faça o upload de sua foto de perfil"
+    deletar_comentario: "Você tem certeza que deseja deletar este comentário?"
     posts:
       new:
         create_post: "Criar Post"
