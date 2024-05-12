@@ -22,6 +22,7 @@ en:
       post:
         titulo: "Title"
         body: "Content"
+        avatar: "Escolha o arquivo"
       perfil:
         nome: "Name"
         sobrenome: "Last Name"
@@ -272,6 +273,7 @@ en:
     nova_senha: "New Password"
     mensagem_deletar: "Are you sure you want to delete this post?"
     top_tags: "Trending Tags"
+    upload_avatar: "Upload your profile picture"
     posts:
       new:
         create_post: "Criar Post"
@@ -281,6 +283,7 @@ en:
     editar_perfil: "Edit Profile"
     editar_senha: "Edit Password"
     deletar_post: "Delete Post"
+    escolher_arquivo: "Choose Photo"
   passwords:
     senha_alterada: "Your password has been changed successfully."
   posts:

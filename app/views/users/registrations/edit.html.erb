@@ -33,7 +33,8 @@
                   </div>
                   <div class="form-data">
                     <%= perfil_form.label t('views.upload_avatar') %><br />
-                    <%= perfil_form.file_field :avatar, placeholder: t('views.upload_avatar'), class: "form-control w-100" %>
+                    <%= perfil_form.file_field :avatar, class: "d-none", id: "avatar_input" %>
+                    <%= button_tag t('buttons.escolher_arquivo'), type: 'button', class: " w-100 btn btn-outline-primary", onclick: "document.getElementById('avatar_input').click();" %>
                   </div>
                   <div class="form-data">
                     <%= perfil_form.label t('views.bio') %><br />
