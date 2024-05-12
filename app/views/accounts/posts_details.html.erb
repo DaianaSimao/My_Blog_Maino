@@ -50,7 +50,7 @@
                         <div class="card-body">
                           <div class="d-flex mb-2">
                             <div class="flex-shrink-0">
-                              <%= image_tag("perfil.png", width: 45, height: 50, class: "rounded-circle") %>
+                              <%= exibir_avatar(comentario.user_id, 45, 50) %>
                             </div>
                             <div class="ms-3">
                               <div class="fw-bold"><%= comentario.autor %></div>
