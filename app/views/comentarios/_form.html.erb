@@ -1,32 +1,25 @@
 <%= form_with(model: comentario) do |form| %>
   <% if comentario.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(comentario.errors.count, "error") %> prohibited this comentario from being saved:</h2>
-
-      <ul>
-        <% comentario.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="container">
+      <% comentario.errors.full_messages.each do |error_message| %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= error_message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+      <% end %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :post_id, style: "display: block" %>
-    <%= form.text_field :post_id %>
-  </div>
-
-  <div>
-    <%= form.label :autor, style: "display: block" %>
-    <%= form.text_field :autor %>
-  </div>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="card bg-light">
+    <div class="card-body">
+      <%= form.text_area :body, class: "form-control mb-3", rows: "3"%>
+      <div>
+        <%= form.submit t('views.enviar_comentario'), class: "btn btn-outline-dark mb-2" %>
+        <%= link_to t('views.cancelar'), post_path(comentario.post), class: "btn btn-outline-primary mb-2" %>
+        <%= form.hidden_field :autor, value: current_user.nil? ? "Anonimo" : current_user.perfil.nome.capitalize %>
+        <%= form.hidden_field :post_id %>
+        <%= form.hidden_field :user_id, value: current_user.nil? ? "" : current_user.id %>
+      </div>
+    </div>
   </div>
 <% end %>
