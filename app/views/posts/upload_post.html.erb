@@ -16,11 +16,13 @@
         <% end %>
         <%= form.hidden_field :user_id, value: current_user.id %>
         <div class="mb-3">
-          <%= form.label :body, class: "form-label" %>
-          <%= form.file_field :body, class: "form-control", required: true %>
+          <%= form.label "Adicione o arquivo", class: "form-label" %>
+          <%= form.file_field :posts, class: "form-control", required: true %>
         </div>
+        <div id="multiple-posts"></div>
         <div class="mb-3">
-          <%= form.submit "Create", class: "btn btn-outline-dark"%>
+          <%= link_to "Adicionar Post", "#", id: "add-post", class: "btn btn-outline-dark" %>
+          <%= form.submit "Create", class: "btn btn-outline-dark ms-2"%>
           <%= link_to "Home", home_index_path, class: "btn btn-outline-dark ms-2" %>
         </div>
       </div>
@@ -32,3 +34,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addPostButton = document.getElementById('add-post');
+    const postsContainer = document.getElementById('multiple-posts');
+
+    let postCount = 1;
+
+    addPostButton.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const newPost = document.createElement('div');
+      newPost.classList.add('post');
+
+      newPost.innerHTML = `
+        <div class="mb-3">
+          <input type="file" name="posts[${postCount}][file]" id="post_file_${postCount}" class="form-control" required>
+        </div>
+      `;
+
+      postsContainer.appendChild(newPost);
+      postCount++;
+    });
+  });
+</script>
