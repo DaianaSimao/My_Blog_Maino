@@ -12,13 +12,18 @@ class PostsController < ApplicationController
   end
 
   def create_upload_post
-    if params[:post][:posts].present?
-      @post = ::Upload::ProcessTxt.new(params[:post][:posts]).execute
-      @post[:user_id] = params[:post][:user_id]
+    if params[:posts].present?
+      @posts = []
+      params[:posts].each do |post|
+        post.shift
+        post_data = ::Upload::ProcessTxt.new(post).execute
+        post_data[:user_id] = params[:post][:user_id]
+        @posts << post_data
+      end
       sleep 2
-      job = ProcessPostsWorker.perform_async(@post[:titulo], @post[:body], @post[:tag_ids], @post[:user_id])
+      job = ProcessPostsWorker.perform_in(10, @posts.as_json)
       flash[:success] = "Posts estão sendo enviados para upload."
-      redirect_to upload_post_path
+      redirect_to root_path
     else
       flash[:error] = "Nenhum post foi enviado."
       redirect_to upload_post_path
@@ -84,6 +89,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:user_id, :titulo, :body, :tag_ids => [])
+      params.require(:post).permit(:user_id, :titulo, :body, :tag_ids => [], :posts => [])
     end
 end
