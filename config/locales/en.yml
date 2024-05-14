@@ -285,12 +285,16 @@ en:
     editar_senha: "Edit Password"
     deletar_post: "Delete Post"
     escolher_arquivo: "Choose Photo"
+    add_post: "Add Post"
+    escolher_upload: "Add file to upload"
   passwords:
     senha_alterada: "Your password has been changed successfully."
   posts:
       criado: "Post created successfully!"
       atualizado: "Post updated successfully!"
       deletado: "Post deleted successfully!"
+      enviado: "Posts are being sent for upload."
+      erro: "Error sending posts."
   will_paginate:
     previous_label: "&#8592; Previous"
     previous_aria_label: "Previous page"

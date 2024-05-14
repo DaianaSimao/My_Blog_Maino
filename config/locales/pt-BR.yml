@@ -295,12 +295,16 @@ pt-BR:
     editar_senha: "Editar Senha"
     deletar_post: "Deletar Post"
     escolher_arquivo: "Escolha uma imagem"
+    add_post: "Adicionar Post"
+    escolher_upload: "Adicione arquivo de upload"
   passwords:
     senha_alterada: "Sua senha foi alterada com sucesso. Você agora está conectado."
   posts:
     criado: "Post criado com sucesso!"
     atualizado: "Post atualizado com sucesso!"
     deletado: "Post deletado com sucesso!"
+    enviado: "Posts estão sendo enviados para upload."
+    erro: "Erro ao enviar posts para upload."
   will_paginate:
     previous_label: "&#8592; Anterior"
     previous_aria_label: "Página anterior"
@@ -309,5 +313,11 @@ pt-BR:
     page_gap: "&hellip;"
     container_aria_label: "Paginação"
     page_aria_label: "Página %{page}"
+  form:
+    file:
+      choose_file: "Escolha o arquivo"
+      no_file_chosen: "Nenhum arquivo escolhido"
+      remove: "Remover"
+
   
   
