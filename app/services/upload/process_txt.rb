@@ -1,7 +1,7 @@
 module Upload
   class ProcessTxt 
     def initialize(file)
-      @file = file.path
+      @file = file.first[:file]
     end
 
     def execute
