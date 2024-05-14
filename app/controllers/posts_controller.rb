@@ -21,11 +21,13 @@ class PostsController < ApplicationController
         @posts << post_data
       end
       sleep 2
-      job = ProcessPostsWorker.perform_in(10, @posts.as_json)
-      flash[:success] = "Posts estão sendo enviados para upload."
+      flash[:success] = I18n.t("posts.enviado")
       redirect_to root_path
+      @posts.each do |post|
+        ProcessPostsWorker.perform_in(10, post.as_json)
+      end
     else
-      flash[:error] = "Nenhum post foi enviado."
+      flash[:error] = I18n.t("posts.erro")
       redirect_to upload_post_path
     end
   end
