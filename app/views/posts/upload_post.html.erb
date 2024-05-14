@@ -17,9 +17,8 @@
         <%= form.hidden_field :user_id, value: current_user.id %>
         <div class="mb-3">
           <%= form.label "Adicione o arquivo", class: "form-label" %>
-          <%= form.file_field :posts, class: "form-control", required: true %>
-        </div>
         <div id="multiple-posts"></div>
+        </div>
         <div class="mb-3">
           <%= link_to "Adicionar Post", "#", id: "add-post", class: "btn btn-outline-dark" %>
           <%= form.submit "Create", class: "btn btn-outline-dark ms-2"%>
