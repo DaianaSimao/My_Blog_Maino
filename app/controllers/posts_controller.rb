@@ -12,10 +12,10 @@ class PostsController < ApplicationController
   end
 
   def create_upload_post
-    if params[:posts].present?
+    if params[:post][:posts].present?
       @posts = []
-      params[:posts].each do |post|
-        post.shift
+      params[:post][:posts].shift
+      params[:post][:posts].each do |post|
         post_data = ::Upload::ProcessTxt.new(post).execute
         post_data[:user_id] = params[:post][:user_id]
         @posts << post_data
