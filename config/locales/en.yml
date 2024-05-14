@@ -278,9 +278,6 @@ en:
     upload_post: "Upload your post"
     selecionar_tags: "Press Ctrl to select multiple tags"
     multiplos_posts: "The text format in the txt file must contain the post title, followed by a line break and the tags, another line break, and finally the post content. Example: 'titulo:\n tags:\n body:'"
-    posts:
-      new:
-        create_post: "Criar Post"
   buttons:
     new_post: "New Post+"
     comment: "Comment"
@@ -293,6 +290,8 @@ en:
   passwords:
     senha_alterada: "Your password has been changed successfully."
   posts:
+      new:
+        create_post: "Criar Post"
       criado: "Post created successfully!"
       atualizado: "Post updated successfully!"
       deletado: "Post deleted successfully!"
@@ -306,3 +305,7 @@ en:
     page_gap: "&hellip;"
     container_aria_label: "Pagination"
     page_aria_label: "Page %{page}"
+  comentarios:
+    criado: "Comment created successfully!"
+    deletado: "Comment deleted successfully!"
+    erro: "Error sending comments."

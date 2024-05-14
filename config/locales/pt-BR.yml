@@ -316,11 +316,9 @@ pt-BR:
     page_gap: "&hellip;"
     container_aria_label: "Paginação"
     page_aria_label: "Página %{page}"
-  form:
-    file:
-      choose_file: "Escolha o arquivo"
-      no_file_chosen: "Nenhum arquivo escolhido"
-      remove: "Remover"
+  comentarios:
+    criado: "Comentário criado com sucesso!"
+    deletado: "Comentário deletado com sucesso!"
 
   
   
