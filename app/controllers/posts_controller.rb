@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def upload_post
     @post = Post.new
+    flash[:notice] = I18n.t('views.multiplos_posts')
   end
 
   def create_upload_post

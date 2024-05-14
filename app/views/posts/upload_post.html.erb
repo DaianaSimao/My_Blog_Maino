@@ -1,6 +1,6 @@
-<div class="container px-5 my-5">
-  <h1 class="display-5 fw-bolder">Upload Post</h1>
-  <div class="card">
+<div class="container px-md-5 my-5">
+  <h1 class="display-5 fw-bolder text-center">Upload Post</h1>
+  <div class="card col-md-6 mx-auto">
     <div class="card-body">
       <%= form_with(model: @post, url: create_upload_post_path, method: :post, multipart: true, data: {turbo: false}) do |form| %>
         <% if @post.errors.any? %>
@@ -16,45 +16,18 @@
         <% end %>
         <%= form.hidden_field :user_id, value: current_user.id %>
         <div class="mb-3">
-          <h4>Para fazer upload de varios post clica em "Add Post".</h4>
-          <div id="multiple-posts"></div>
-        </div>
-        <div class="mb-3">
-          <%= link_to "Add Post", "#", id: "add-post", class: "btn btn-outline-dark" %>
-          <%= form.submit "Upload" , class: "btn btn-outline-success ms-2"%>
-          <%= link_to "Home", home_index_path, class: "btn btn-outline-dark ms-2" %>
+          <h4 class="text-center"><%= t('buttons.escolher_upload') %></h4>
+          <%= form.file_field :posts, class: "d-none", id: "posts_input", multiple: true %>
+          <%= button_tag t('buttons.escolher_upload'), type: 'button', class: "w-100 btn btn-outline-primary mb-1", onclick: "document.getElementById('posts_input').click();" %>
+          <%= form.submit "Upload" , class: "btn btn-outline-success mt-2"%>
+          <%= link_to "Home", home_index_path, class: "btn btn-outline-dark  mt-2" %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-</div>
+
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const addPostButton = document.getElementById('add-post');
-    const postsContainer = document.getElementById('multiple-posts');
-
-    let postCount = 1;
-
-    addPostButton.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      const newPost = document.createElement('div');
-      newPost.classList.add('post');
-
-      newPost.innerHTML = `
-        <div class="mb-3">
-          <%= button_tag t('buttons.escolher_upload'), type: 'button', class: "w-50 btn btn-outline-primary mb-1", onclick: "document.getElementById('post_file_${postCount}').click();" %>
-          <input type="file" name="posts[${postCount}][file]" id="post_file_${postCount}" class="form-control" required style="display: none;">
-        </div>
-      `;
-
-      postsContainer.appendChild(newPost);
-      postCount++;
-    });
-  });
-</script>
