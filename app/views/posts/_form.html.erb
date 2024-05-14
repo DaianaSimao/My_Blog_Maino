@@ -29,7 +29,7 @@
 
           <div class="mb-3 col-md-4">
             <%= form.label "Tags" %>
-              <i class="bi bi-question-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top"data-bs-title="Pressione Ctrl para selecionar várias tags"></i>
+              <i class="bi bi-question-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top"data-bs-title="<%= t('views.selecionar_tags') %>"></i>
             <%= form.select :tag_ids, options_for_select(Tag.order(:nome).map { |tag| [tag.nome, tag.id] }, params[:tag_ids]), { include_hidden: false }, { class: "form-select mt-3", multiple: true, id: "tag-dropdown", required: true } %>
           </div>
           <div id="selected-tags"></div>
@@ -47,6 +47,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <% end %>
 <script>
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>

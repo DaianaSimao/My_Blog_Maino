@@ -285,6 +285,9 @@ pt-BR:
     top_tags: "Tags em alta"
     upload_avatar: "Faça o upload de sua foto de perfil"
     deletar_comentario: "Você tem certeza que deseja deletar este comentário?"
+    upload_post: "Faça o upload de seu post"
+    selecionar_tags: "Pressione Ctrl para selecionar várias tags"
+    multiplos_posts: "O formato do texto no arquivo txt deve conter o título do post, seguido de uma quebra de linha e as tags, outra quebra de linha e por ultimo os conteúdo do posts. Exemplo: 'titulo: \n tags: \n body:'"
     posts:
       new:
         create_post: "Criar Post"
