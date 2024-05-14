@@ -35,7 +35,7 @@ class ComentariosController < ApplicationController
   def update
     respond_to do |format|
       if @comentario.update(comentario_params)
-        format.html { redirect_to  post_path(@comentario.post_id), notice: "Comentario was successfully updated." }
+        format.html { redirect_to  post(@comentario.post), notice: I18n.t('comentarios.atualizado') }
         format.json { render :show, status: :ok, location: @comentario }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -46,10 +46,11 @@ class ComentariosController < ApplicationController
 
   # DELETE /comentarios/1 or /comentarios/1.json
   def destroy
+    post = @comentario.post
     @comentario.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_details_path, notice: "Comentario was successfully destroyed." }
+      format.html { redirect_to post_path(post), notice: I18n.t('comentarios.deletado') }
       format.json { head :no_content }
     end
   end
