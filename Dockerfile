@@ -19,7 +19,6 @@ ENV BUNDLE_DEPLOYMENT="1" \
 RUN gem update --system --no-document && \
     gem install -N bundler
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -56,6 +55,8 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
 
+# Configure Sidekiq
+RUN bundle exec sidekiq-config generate .sidekiq.yml
 
 # Final stage for app image
 FROM base
@@ -82,5 +83,6 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 # Entrypoint sets up the container.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
+# Start Sidekiq
+#CMD ["bundle", "exec", "sidekiq"]
+CMD ["sh", "-c", "bin/rails db:migrate && bin/rails dev:add_tags && bin/rails dev:create_users && bin/rails dev:create_posts && bin/rails server -b 0.0.0.0"]
