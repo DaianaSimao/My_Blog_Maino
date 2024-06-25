@@ -82,4 +82,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start Sidekiq
 #CMD ["bundle", "exec", "sidekiq"]
-CMD ["sh", "-c", "bin/rails db:migrate && bin/rails dev:add_tags && bin/rails dev:create_users && bin/rails dev:create_posts && bin/rails server -b 0.0.0.0"]
+#CMD ["sh", "-c", "bin/rails db:migrate && bin/rails dev:add_tags && bin/rails dev:create_users && bin/rails dev:create_posts && bin/rails server -b 0.0.0.0"]
