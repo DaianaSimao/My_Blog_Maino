@@ -25,6 +25,7 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
+gem 'fog-backblaze'
 
 group :development, :test do
 
