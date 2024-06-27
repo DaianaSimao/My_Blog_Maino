@@ -81,3 +81,5 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
+
+CMD ["sh", "-c", "bin/rails server -b 0.0.0.0"]
