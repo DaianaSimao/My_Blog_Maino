@@ -80,6 +80,7 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 # Entrypoint sets up the container.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
+EXPOSE 3000
 # Start Sidekiq
 #CMD ["bundle", "exec", "sidekiq"]
 #CMD ["sh", "-c", "bin/rails db:migrate && bin/rails dev:add_tags && bin/rails dev:create_users && bin/rails dev:create_posts && bin/rails server -b 0.0.0.0"]
