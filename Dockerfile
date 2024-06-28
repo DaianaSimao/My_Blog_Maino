@@ -82,4 +82,7 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "bundle exec sidekiq && bin/rails server -b 0.0.0.0"]
+COPY ./entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
+
+CMD ["/usr/bin/entrypoint.sh"]
