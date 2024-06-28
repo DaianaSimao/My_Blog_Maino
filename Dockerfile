@@ -68,7 +68,7 @@ COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
 # Change permissions for entrypoint script
-COPY ./bin/entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 
 # Run and own only the runtime files as a non-root user for security
