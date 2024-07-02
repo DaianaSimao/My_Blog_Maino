@@ -4,7 +4,7 @@
 
 <h5 align="left"> OBJETIVO: Criar um blog completo utilizando Ruby on Rails 7, HTML, CSS, JavaScript e Bootstrap (opcional).</h5>
 <h2 align="left">🎯 2 - Deploy Fly.io.</h2>
-<h3>:earth_americas: https://my-blog-maino.fly.dev</h3>
+<h3>:earth_americas: https://my-blog-maino.onrender.com</h3>
 
 ###
 
