@@ -26,6 +26,7 @@ gem 'capybara'
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
 gem 'aws-sdk-s3'
+gem 'importmap-rails'
 
 group :development, :test do
 

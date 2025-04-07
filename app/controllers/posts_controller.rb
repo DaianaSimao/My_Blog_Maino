@@ -21,15 +21,21 @@ class PostsController < ApplicationController
         post_data[:user_id] = params[:post][:user_id]
         @posts << post_data
       end
-      sleep 2
-      flash[:success] = I18n.t("posts.enviado")
-      redirect_to root_path
+      
+      # Processar os posts primeiro
       @posts.each do |post|
-        ProcessPostsWorker.perform_in(10, post.as_json)
+        ProcessPostsWorker.perform_async(post.as_json)
       end
+      # Enviar uma notificação inicial
+      ActionCable.server.broadcast(
+        "upload_notifications_#{params[:post][:user_id]}",
+        {
+          message: "Iniciando processamento de #{@posts.size} posts...",
+          status: 'info'
+        }
+      )
     else
       flash[:error] = I18n.t("posts.erro")
-      redirect_to upload_post_path
     end
   end
 

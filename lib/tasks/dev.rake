@@ -57,7 +57,8 @@ namespace :dev do
       { email: "usuario1@example.com", password: "password123", password_confirmation: "password123" },
       { email: "usuario2@example.com", password: "password456", password_confirmation: "password456" },
       { email: "usuario3@example.com", password: "password789", password_confirmation: "password789" },
-      { email: "usuario4@example.com", password: "passwordabc", password_confirmation: "passwordabc" }
+      { email: "usuario4@example.com", password: "passwordabc", password_confirmation: "passwordabc" },
+      { email: "admin@hotmail.com", password: "12345d", password_confirmation: "12345d" }
     ]
 
     users_data.each do |user_data|

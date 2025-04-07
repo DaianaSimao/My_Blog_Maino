@@ -76,3 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Action Cable setup
+import { createConsumer } from "@rails/actioncable"
+window.App = {}
+App.cable = createConsumer()

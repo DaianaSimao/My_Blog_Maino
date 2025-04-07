@@ -9,9 +9,12 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
   </head>
   <body>
+    <!-- Notificações -->
+    <div id="notifications" class="position-fixed top-0 end-0 p-3" style="z-index: 1050"></div>
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#!">My Blog</a>
@@ -69,4 +72,46 @@
       <p class="m-0">Copyright &copy; Daiana Simão <%= Date.current.year %></p>
     </div>
   </footer>
+  
+  <!-- Scripts para notificações -->
+  <script src="https://cdn.jsdelivr.net/npm/@rails/actioncable@7.0.0/app/assets/javascripts/action_cable.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      <% if user_signed_in? %>
+      const consumer = ActionCable.createConsumer();
+      
+      const channel = consumer.subscriptions.create("UploadNotificationsChannel", {
+        connected() {
+          console.log("Conectado ao canal de notificações");
+        },
+        disconnected() {
+          console.log("Desconectado do canal de notificações");
+        },
+        received(data) {
+          const notification = document.createElement('div');
+          notification.className = `toast show ${data.status === 'error' ? 'bg-danger text-white' : data.status === 'info' ? 'bg-info text-white' : 'bg-success text-white'}`;
+          notification.setAttribute('role', 'alert');
+          notification.setAttribute('aria-live', 'assertive');
+          notification.setAttribute('aria-atomic', 'true');
+          
+          notification.innerHTML = `
+            <div class="toast-header ${data.status === 'error' ? 'bg-danger text-white' : data.status === 'info' ? 'bg-info text-white' : 'bg-success text-white'}">
+              <strong class="me-auto">${data.status === 'error' ? 'Erro' : data.status === 'info' ? 'Informação' : 'Sucesso'}</strong>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              ${data.message}
+            </div>
+          `;
+          
+          document.getElementById('notifications').appendChild(notification);
+          
+          setTimeout(() => {
+            notification.remove();
+          }, 5000);
+        }
+      });
+      <% end %>
+    });
+  </script>
 </html>

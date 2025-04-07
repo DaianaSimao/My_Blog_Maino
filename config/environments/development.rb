@@ -47,7 +47,7 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     user_name: 'daiana.xd11@gmail.com',
-    password: 'zqfw fugr gczl qjqk',
+    password: 'dtxg klsj lncm qcye',
     authentication: 'plain',
     enable_starttls_auto: true
   }
@@ -79,5 +79,6 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   # Uncomment if you wish to allow Action Cable access from any origin.
-  # config.action_cable.disable_request_forgery_protection = true
+  config.action_cable.disable_request_forgery_protection = true
+  config.action_cable.allowed_request_origins = [ "http://localhost:3000", "http://127.0.0.1:3000" ]
 end
